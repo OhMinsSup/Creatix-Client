@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { connect } from 'react-redux';
+import { StoreState } from 'store';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+interface OwnProps {}
+interface StateProps {}
+interface DispatchProps {}
+type AppProps = OwnProps & StateProps & DispatchProps;
 
-export default App;
+const App: React.SFC<AppProps> = () => {
+  const user = true;
+  return <React.Fragment>{user ? <LoggedIn /> : <LoggedOut />}</React.Fragment>;
+};
+
+const LoggedOut: React.SFC = () => {
+  return <div>로그아웃</div>;
+};
+
+const LoggedIn: React.SFC = () => {
+  return <div>로그인</div>;
+};
+
+export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
+  state => ({}),
+  dispatch => ({}),
+)(App);
