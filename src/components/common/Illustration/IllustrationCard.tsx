@@ -37,15 +37,17 @@ const IllustrationCardBlock = styled.div`
   }
 `;
 
-interface IllustrationCardProps {}
+interface IllustrationCardProps {
+  onOpen: () => void;
+}
 
-const IllustrationCard: React.SFC<IllustrationCardProps> = () => {
+const IllustrationCard: React.SFC<IllustrationCardProps> = ({ onOpen }) => {
   return (
     <IllustrationCardBlock>
       <div className="wrapper">
         <div className="contents">
           <IllustrationMeta />
-          <IllustrationImages />
+          <IllustrationImages onOpen={onOpen} />
           <Link to="/" className="description">
             <p>
               Hi all, thanks for being a part of our healthy community of

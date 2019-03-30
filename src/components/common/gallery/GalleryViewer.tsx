@@ -54,6 +54,7 @@ const GalleryViewerBlock = styled.div`
       color: white;
       background: transparent;
       background-color: transparent;
+      outline: none;
       svg {
         width: 30px;
         height: 30px;
@@ -64,11 +65,12 @@ const GalleryViewerBlock = styled.div`
 
 interface GalleryViewerProps {
   images: string[];
+  onClose: () => void;
 }
 
 const { useState, useCallback } = React;
 
-const GalleryViewer: React.SFC<GalleryViewerProps> = ({ images }) => {
+const GalleryViewer: React.SFC<GalleryViewerProps> = ({ images, onClose }) => {
   const [location, setLocation] = useState(0);
 
   const onNext = useCallback(() => {
@@ -94,7 +96,7 @@ const GalleryViewer: React.SFC<GalleryViewerProps> = ({ images }) => {
       <GalleryViewerOverlay />
       <GalleryViewerBlock>
         <div className="contents">
-          <button className="close">
+          <button className="close" onClick={onClose}>
             <CloseIcon />
           </button>
           {images.map((image, index) =>
@@ -104,8 +106,8 @@ const GalleryViewer: React.SFC<GalleryViewerProps> = ({ images }) => {
               <GralleryMedia visible={false} image={image} />
             ),
           )}
-          <GralleryPrev onClick={onPrev}/>
-          <GralleryNext onClick={onNext}/>
+          <GralleryPrev onClick={onPrev} />
+          <GralleryNext onClick={onNext} />
           <GralleryActive images={images} location={location} />
         </div>
       </GalleryViewerBlock>

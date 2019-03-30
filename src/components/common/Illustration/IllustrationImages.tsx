@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import palette from '../../../lib/styles/palette';
 
 const src =
@@ -20,11 +21,13 @@ const IllustrationImagesBlock = styled.div`
   }
 `;
 
-interface IllustrationImagesProps {}
+interface IllustrationImagesProps {
+  onOpen: () => void;
+}
 
-const IllustrationImages: React.SFC<IllustrationImagesProps> = () => {
+const IllustrationImages: React.SFC<IllustrationImagesProps> = ({ onOpen }) => {
   return (
-    <IllustrationImagesBlock>
+    <IllustrationImagesBlock onClick={onOpen}>
       <img src={src} />
     </IllustrationImagesBlock>
   );

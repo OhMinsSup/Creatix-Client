@@ -6,17 +6,19 @@ const IllustrationCardsBlock = styled.div`
   margin: 0 auto;
 `;
 
-interface IllustrationCardsProps {}
+interface IllustrationCardsProps {
+  onOpen: () => void;
+}
 
-const IllustrationCards: React.SFC<IllustrationCardsProps> = () => {
+const IllustrationCards: React.SFC<IllustrationCardsProps> = ({ onOpen }) => {
   return (
     <IllustrationCardsBlock>
-      <IllustrationCard />
-      <IllustrationCard />
-      <IllustrationCard />
-      <IllustrationCard />
-      <IllustrationCard />
-      <IllustrationCard />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
     </IllustrationCardsBlock>
   );
 };

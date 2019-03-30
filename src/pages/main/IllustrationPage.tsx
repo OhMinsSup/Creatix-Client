@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import IllustrationCards from '../../components/common/Illustration/IllustrationCards';
+import IllustrationList from '../../containers/list/IllustrationList';
 
 const IllustrationPageBlock = styled.div`
   display: flex;
@@ -15,8 +15,7 @@ interface IllustrationPageProps {}
 const IllustrationPage: React.SFC<IllustrationPageProps> = () => {
   return (
     <IllustrationPageBlock>
-      {/* TODO 나중에 포스트 리스팅해주는 컨테이너 생성 지금은 보여주는 식으로만 생성 */}
-      <IllustrationCards />
+      <IllustrationList />
     </IllustrationPageBlock>
   );
 };
