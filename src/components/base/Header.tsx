@@ -1,10 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import {
-  MdSearch as SearchIcon,
-  MdPersonOutline as AuthIcon,
-} from 'react-icons/md';
+import { MdSearch as SearchIcon } from 'react-icons/md';
 import palette from '../../lib/styles/palette';
 
 const HeaderBlock = styled.div`
@@ -122,7 +119,6 @@ const HeaderRight = styled.div`
   .auth-btn {
     display: flex;
     flex-direction: row;
-    cursor: pointer;
     margin-left: 0.5rem;
     font-size: 14px;
     border-radius: 3px;
@@ -131,21 +127,13 @@ const HeaderRight = styled.div`
     background: #fff;
     border: 1px solid ${palette.cyan3};
     padding: 8px 12px;
-    .auth-icon {
-      overflow: hidden;
-      vertical-align: middle;
-      width: 24px;
-      height: 24px;
-      fill: #000;
-      margin-right: 4px;
-      position: relative;
-      top: -1px;
-    }
+    cursor: pointer;
     span {
       line-height: 1.7;
     }
     &:hover {
-      border: 2px solid ${palette.cyan3};
+      background: ${palette.cyan3};
+      color: white;
     }
   }
 `;
@@ -172,7 +160,6 @@ const Header: React.SFC = () => {
               </Link>
             </div>
             <div className="auth-btn">
-              <AuthIcon className="auth-icon" />
               <span>로그인/회원가입</span>
             </div>
           </HeaderRight>

@@ -33,6 +33,9 @@ const NavMenuItem = styled(NavLink)`
     overflow: hidden;
     vertical-align: middle;
   }
+  &:hover {
+    background: ${palette.gray1};
+  }
   &.active {
     border-right: 3px solid ${palette.cyan4};
     color: ${palette.cyan4};

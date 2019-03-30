@@ -31,6 +31,28 @@ const palette = {
   red7: '#f03e3e',
   red8: '#e03131',
   red9: '#c92a2a',
+
+  green0: '#ebfbee',
+  green1: '#d3f9d8',
+  green2: '#b2f2bb',
+  green3: '#8ce99a',
+  green4: '#69db7c',
+  green5: '#51cf66',
+  green6: '#40c057',
+  green7: '#37b24d',
+  green8: '#2f9e44',
+  green9: '#2b8a3e',
+
+  blue0: '#e7f5ff',
+  blue1: '#d0ebff',
+  blue2: '#a5d8ff',
+  blue3: '#74c0fc',
+  blue4: '#4dabf7',
+  blue5: '#339af0',
+  blue6: '#228be6',
+  blue7: '#1c7ed6',
+  blue8: '#1971c2',
+  blue9: '#1864ab',
 };
 
 export default palette;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { StoreState } from 'store';
 import { Switch, Route } from 'react-router-dom';
 import MainPage from './pages/main/MainPage';
+import Core from './containers/etc/Core';
 
 interface OwnProps {}
 interface StateProps {}
@@ -15,6 +16,7 @@ const App: React.SFC<AppProps> = () => {
       <Switch>
         <Route exact path="/" component={MainPage} />
       </Switch>
+      <Core />
     </React.Fragment>
   );
 };
