@@ -4,15 +4,23 @@ import { Link } from 'react-router-dom';
 import { MdSearch as SearchIcon } from 'react-icons/md';
 import palette from '../../lib/styles/palette';
 
-const HeaderBlock = styled.div`
+const HeaderBlock = styled.div<{ floating: boolean }>`
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 1rem;
   position: relative;
   z-index: 920;
+  ${props =>
+    props.floating &&
+    css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0px 0 8px rgba(0, 0, 0, 0.08);
+    `}
   .wrapper {
     padding: 0 15px;
     max-width: 100%;
@@ -112,6 +120,7 @@ const HeaderRight = styled.div`
         0.1s fill;
     }
     &:hover {
+      cursor: pointer;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
       border-radius: 5px;
     }
@@ -138,9 +147,13 @@ const HeaderRight = styled.div`
   }
 `;
 
-const Header: React.SFC = () => {
+interface HeaderProps {
+  floating: boolean;
+}
+
+const Header: React.SFC<HeaderProps> = ({ floating }) => {
   return (
-    <HeaderBlock>
+    <HeaderBlock floating={floating}>
       <div className="wrapper">
         <div className="action-nav">
           <HeaderLeft className="left">

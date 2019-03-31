@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavMenu from './NavMenu';
+import WigetMenuContanier from '../../containers/main/WigetMenuContanier';
 
 const MainSideMenuBlock = styled.div`
   display: flex;
@@ -12,7 +13,8 @@ const MainSideMenu: React.SFC<MainSideMenuProps> = () => {
   return (
     <MainSideMenuBlock>
       <NavMenu />
-      {/* TODO 추후 다른 사이드 메뉴 컴포넌트 생성 */}
+      <WigetMenuContanier title="추천" />
+      <WigetMenuContanier title="인기" />
     </MainSideMenuBlock>
   );
 };
