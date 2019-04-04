@@ -4,8 +4,17 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
+    "@loadable/babel-plugin": "^5.7.2",
+    "@loadable/component": "^5.7.0",
+    "@loadable/server": "^5.7.0",
+    "@loadable/webpack-plugin": "^5.7.1",
     "@svgr/webpack": "4.1.0",
+    "@types/express": "^4.16.1",
+    "@types/express-http-proxy": "^1.5.2",
+    "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "24.0.9",
+    "@types/loadable__component": "^5.6.0",
+    "@types/loadable__server": "^5.2.1",
     "@types/node": "11.10.4",
     "@types/react": "16.8.6",
     "@types/react-dom": "16.8.2",
@@ -15,6 +24,10 @@
     "@types/redux": "^3.6.0",
     "@types/redux-saga": "^0.10.5",
     "@types/styled-components": "^4.1.12",
+    "apollo-boost": "^0.3.1",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.14",
     "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -34,12 +47,17 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.4",
+    "express": "^4.16.4",
+    "express-http-proxy": "^1.5.1",
     "file-loader": "2.0.0",
+    "fork-ts-checker-webpack-plugin": "^1.0.1",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.1",
+    "graphql": "^14.2.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "immer": "^2.1.1",
+    "isomorphic-fetch": "^2.2.1",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
@@ -52,6 +70,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
     "react": "^16.8.4",
+    "react-apollo": "^2.5.3",
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.4",
@@ -74,12 +93,15 @@
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
+    "webpack-node-externals": "^1.7.2",
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
+    "ssr": "node ./dist/server.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "build:ssr": "node scripts/build.ssr.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -138,6 +160,10 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "@loadable/babel-plugin"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

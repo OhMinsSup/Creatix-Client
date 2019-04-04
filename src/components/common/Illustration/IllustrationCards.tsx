@@ -19,6 +19,22 @@ const IllustrationCards: React.SFC<IllustrationCardsProps> = ({ onOpen }) => {
       <IllustrationCard onOpen={onOpen} />
       <IllustrationCard onOpen={onOpen} />
       <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
     </IllustrationCardsBlock>
   );
 };
