@@ -21,7 +21,7 @@ const HeaderBlock = styled.div<{ floating: boolean }>`
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0px 0 8px rgba(0, 0, 0, 0.08);
     `}
-  .wrapper {
+  > .wrapper {
     padding: 0 15px;
     max-width: 100%;
     margin: auto;
@@ -131,27 +131,36 @@ const HeaderRight = styled.div`
     margin-left: 0.5rem;
     font-size: 14px;
     border-radius: 3px;
-    color: #000;
     font-weight: 600;
     background: #fff;
     border: 1px solid ${palette.cyan3};
     padding: 8px 12px;
     cursor: pointer;
-    span {
-      line-height: 1.7;
+    button {
+      border: none;
+      outline: none;
+      background: white;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
     }
     &:hover {
       background: ${palette.cyan3};
-      color: white;
+      button {
+        background: ${palette.cyan3};
+        color: white;
+      }
     }
   }
 `;
 
 interface HeaderProps {
   floating: boolean;
+  onAuthModalOpen: () => void;
 }
 
-const Header: React.SFC<HeaderProps> = ({ floating }) => {
+const Header: React.SFC<HeaderProps> = ({ floating, onAuthModalOpen }) => {
   return (
     <HeaderBlock floating={floating}>
       <div className="wrapper">
@@ -173,7 +182,7 @@ const Header: React.SFC<HeaderProps> = ({ floating }) => {
               </Link>
             </div>
             <div className="auth-btn">
-              <span>로그인/회원가입</span>
+              <button onClick={onAuthModalOpen}>로그인/회원가입</button>
             </div>
           </HeaderRight>
         </div>

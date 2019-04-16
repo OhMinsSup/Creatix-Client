@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import {
   MdHome as HomeIcon,
-  MdTrendingUp,
-  MdAccessTime,
-  MdRssFeed,
+  MdPhoto as IllustIcon,
+  MdLibraryBooks as BookIcon,
 } from 'react-icons/md';
 import palette from '../../lib/styles/palette';
 
@@ -47,6 +46,7 @@ const NavMenuItem = styled(NavLink)`
 `;
 
 const NavMenuBlock = styled.nav`
+  margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid ${palette.gray2};
@@ -73,13 +73,13 @@ const NavMenu: React.SFC<NavMenuProps> = () => {
           <HomeIcon />
           <span>Home</span>
         </NavMenuItem>
-        <NavMenuItem to="/recent">
-          <MdAccessTime />
-          <span>최신</span>
+        <NavMenuItem to="/illust">
+          <IllustIcon />
+          <span>일러스트</span>
         </NavMenuItem>
-        <NavMenuItem to="/trending">
-          <MdRssFeed />
-          <span>팔로우</span>
+        <NavMenuItem to="/books">
+          <BookIcon />
+          <span>소설</span>
         </NavMenuItem>
       </ul>
     </NavMenuBlock>

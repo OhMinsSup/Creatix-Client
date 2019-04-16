@@ -1,14 +1,23 @@
 import React from 'react';
 import Header from '../../components/base/Header';
 import { getScrollTop } from '../../lib/utils';
+import { connect } from 'react-redux';
+import { openAuthModal } from '../../store/modules/base';
+import { StoreState } from 'store';
 
-interface HeaderContainerProps {}
+interface OwnProps {}
+interface StateProps {}
+interface DispatchProps {
+  openAuthModal: typeof openAuthModal;
+}
+type HeaderContainerProps = StateProps & DispatchProps & OwnProps;
 
 const { useEffect, useCallback, useState } = React;
 
-const HeaderContainer: React.SFC<HeaderContainerProps> = () => {
+const HeaderContainer: React.SFC<HeaderContainerProps> = ({
+  openAuthModal,
+}) => {
   const [floating, setFloating] = useState(false);
-
   const onScroll = useCallback(() => {
     const scrollTop = getScrollTop();
     if (floating && scrollTop === 0) {
@@ -18,6 +27,10 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = () => {
     setFloating(true);
   }, [floating]);
 
+  const onAuthModalOpen = () => {
+    openAuthModal();
+  };
+
   useEffect(() => {
     document.addEventListener('scroll', onScroll);
     const reset = () => {
@@ -26,7 +39,12 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = () => {
     return reset;
   });
 
-  return <Header floating={floating} />;
+  return <Header floating={floating} onAuthModalOpen={onAuthModalOpen} />;
 };
 
-export default HeaderContainer;
+export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
+  () => ({}),
+  {
+    openAuthModal,
+  },
+)(HeaderContainer);

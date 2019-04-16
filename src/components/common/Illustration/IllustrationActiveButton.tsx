@@ -15,6 +15,7 @@ const IllustrationActiveButtonBlock = styled.button<{
   position: relative;
   overflow: visible;
   cursor: pointer;
+  outline: none;
   ${props =>
     props.type === 'comment' &&
     css`

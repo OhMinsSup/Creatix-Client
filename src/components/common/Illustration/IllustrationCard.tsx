@@ -14,7 +14,7 @@ const IllustrationCardBlock = styled.div`
   border-radius: 8px;
   background: #fff;
   transition: background 0.3s ease-in-out;
-  .wrapper {
+  > .wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

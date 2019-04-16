@@ -13,7 +13,7 @@ const GralleryActiveBlock = styled.div`
   position: absolute;
   width: 100%;
   z-index: 2;
-  .wrapper {
+  > .wrapper {
     background-color: rgba(20, 29, 38, 0);
     transition: background-color 0.25s ease-in;
     border-bottom: 0;
@@ -53,7 +53,7 @@ const WriterInfoBlock = styled.div`
   padding-top: 1rem;
   line-height: 2px;
   top: 1.5rem;
-  .wrapper {
+  > .wrapper {
     display: flex;
     flex-direction: row;
     padding-bottom: 1.5rem;

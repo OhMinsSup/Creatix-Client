@@ -12,7 +12,7 @@ const IllustrationMetaBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  .wrapper {
+  > .wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
