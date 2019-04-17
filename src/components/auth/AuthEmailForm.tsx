@@ -22,8 +22,8 @@ const AuthEmailFormBlock = styled.form`
     }
   }
   button {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     background: ${palette.cyan6};
     color: white;
     font-size: 1rem;

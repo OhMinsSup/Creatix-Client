@@ -1,5 +1,5 @@
 import { createStandardAction, getType } from 'typesafe-actions';
-import { SetWidthPayload, SetErrorPayload } from 'base-store';
+import produce from 'immer';
 
 export enum BaseActionTypes {
   SET_WIDTH = 'base/SET_WIDTH',
@@ -10,14 +10,17 @@ export enum BaseActionTypes {
 
   OPEN_AUTH_MODAL = 'base/OPEN_AUTH_MODAL',
   CLOSE_AUTH_MODAL = 'base/CLOSE_AUTH_MODAL',
+
+  CHANGE_AUTH_MODAL_MODE = 'core/CHANGE_AUTH_MODAL_MODE',
 }
 
 export const setWidth = createStandardAction(BaseActionTypes.SET_WIDTH)<
-  SetWidthPayload
+  number
 >();
-export const setError = createStandardAction(BaseActionTypes.SET_ERROR)<
-  SetErrorPayload
->();
+export const setError = createStandardAction(BaseActionTypes.SET_ERROR)<{
+  name: string;
+  message: string;
+} | null>();
 export const openGrally = createStandardAction(BaseActionTypes.OPEN_GRALLY)();
 export const closeGrally = createStandardAction(BaseActionTypes.CLOSE_GRALLY)();
 export const openAuthModal = createStandardAction(
@@ -26,7 +29,11 @@ export const openAuthModal = createStandardAction(
 export const closeAuthModal = createStandardAction(
   BaseActionTypes.CLOSE_AUTH_MODAL,
 )();
+export const changeAuthModalMode = createStandardAction(
+  BaseActionTypes.CHANGE_AUTH_MODAL_MODE,
+)<'REGISTER' | 'LOGIN'>();
 
+type ChangeAuthModalMode = ReturnType<typeof changeAuthModalMode>;
 type CloseAuthModal = ReturnType<typeof closeAuthModal>;
 type OpenAuthModal = ReturnType<typeof openAuthModal>;
 type OpenGrally = ReturnType<typeof openGrally>;
@@ -39,7 +46,8 @@ type BaseActions =
   | OpenGrally
   | CloseGrally
   | CloseAuthModal
-  | OpenAuthModal;
+  | OpenAuthModal
+  | ChangeAuthModalMode;
 
 export interface BaseState {
   layer: {
@@ -53,6 +61,7 @@ export interface BaseState {
     visible: boolean;
   };
   auth_modal: {
+    mode: 'REGISTER' | 'LOGIN';
     visible: boolean;
   };
 }
@@ -66,6 +75,7 @@ const initialState: Readonly<BaseState> = {
     visible: false,
   },
   auth_modal: {
+    mode: 'LOGIN',
     visible: false,
   },
 };
@@ -102,19 +112,17 @@ const reducer = (
         },
       };
     case getType(openAuthModal):
-      return {
-        ...state,
-        auth_modal: {
-          visible: true,
-        },
-      };
+      return produce(state, draft => {
+        draft.auth_modal.visible = true;
+      });
     case getType(closeAuthModal):
-      return {
-        ...state,
-        auth_modal: {
-          visible: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.auth_modal.visible = false;
+      });
+    case getType(changeAuthModalMode):
+      return produce(state, draft => {
+        draft.auth_modal.mode = action.payload;
+      });
     default:
       return state;
   }

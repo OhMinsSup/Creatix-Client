@@ -3,11 +3,3 @@ declare module 'store' {
     typeof import('../store/modules/index').default
   >;
 }
-
-declare module 'base-store' {
-  export type SetWidthPayload = number;
-  export type SetErrorPayload = {
-    name: string;
-    message: string;
-  } | null;
-}

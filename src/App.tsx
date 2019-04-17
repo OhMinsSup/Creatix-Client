@@ -8,7 +8,6 @@ const MainPage = loadable(() => import('./pages/main/MainPage'));
 const RegisterPage = loadable(() => import('./pages/RegisterPage'));
 
 interface AppProps {}
-
 const App: React.SFC<AppProps> = () => {
   return (
     <React.Fragment>
