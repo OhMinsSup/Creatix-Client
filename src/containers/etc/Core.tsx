@@ -1,7 +1,7 @@
 import React from 'react';
 import GalleryViewerContainer from '../base/GalleryViewerContainer';
 import { connect } from 'react-redux';
-import { StoreState } from 'store';
+import { StoreState } from '../../store/modules';
 
 interface OwnProps {}
 interface StateProps {

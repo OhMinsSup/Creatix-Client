@@ -1,12 +1,15 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import RegisterFormContainer from '../containers/register/RegisterFormContainer';
+import RegisterTemplate from '../components/register/RegisterTemplate';
 
-const RegisterPage: React.SFC = () => {
+interface RegisterPageProps extends RouteComponentProps {}
+const RegisterPage: React.SFC<RegisterPageProps> = () => {
   return (
-    <React.Fragment>
-      <div>dsdsds</div>
-    </React.Fragment>
+    <RegisterTemplate>
+      <RegisterFormContainer />
+    </RegisterTemplate>
   );
 };
 
-export default RegisterPage;
+export default withRouter(RegisterPage);

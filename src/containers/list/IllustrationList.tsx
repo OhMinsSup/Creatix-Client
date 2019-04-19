@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StoreState } from 'store';
 import { openGrally } from '../../store/modules/base';
 import IllustrationCards from '../../components/common/Illustration/IllustrationCards';
+import { StoreState } from '../../store/modules';
 
 interface OwnProps {}
 interface StateProps {}

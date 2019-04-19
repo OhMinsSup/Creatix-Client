@@ -3,7 +3,7 @@ import Header from '../../components/base/Header';
 import { getScrollTop } from '../../lib/utils';
 import { connect } from 'react-redux';
 import { openAuthModal } from '../../store/modules/base';
-import { StoreState } from 'store';
+import { StoreState } from '../../store/modules';
 
 interface OwnProps {}
 interface StateProps {}

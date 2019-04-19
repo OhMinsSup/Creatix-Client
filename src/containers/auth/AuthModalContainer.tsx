@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MutationFn } from 'react-apollo';
 import { toast } from 'react-toastify';
-import { StoreState } from 'store';
 import AuthModal from '../../components/auth/AuthModal';
 import AuthForm from '../../components/auth/AuthForm';
 import { closeAuthModal, changeAuthModalMode } from '../../store/modules/base';
@@ -12,6 +11,7 @@ import {
   sendAuthEmail,
   sendAuthEmailVariables,
 } from '../../lib/graphql/mutations/auth/sendAuthEmail/sendAuthEmail.typing';
+import { StoreState } from '../../store/modules';
 
 interface OwnProps {}
 interface StateProps {

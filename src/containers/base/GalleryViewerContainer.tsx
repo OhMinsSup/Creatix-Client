@@ -2,7 +2,7 @@ import React from 'react';
 import GalleryViewer from '../../components/common/gallery/GalleryViewer';
 import { closeGrally } from '../../store/modules/base';
 import { connect } from 'react-redux';
-import { StoreState } from 'store';
+import { StoreState } from '../../store/modules';
 
 interface OwnProps {
   grally: boolean;

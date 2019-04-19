@@ -18,9 +18,14 @@ const MainLeft = styled.header`
   width: 320px;
   z-index: 910;
 `;
+const Right = styled.div`
+  width: 240px;
+  z-index: 910;
+`;
 
 type MainTemplateNamespace = {
   MainLeft: typeof MainLeft;
+  Right: typeof Right;
 };
 
 interface MainTemplateProps {}
@@ -36,5 +41,6 @@ const MainTemplate: React.SFC<MainTemplateProps> & MainTemplateNamespace = ({
 };
 
 MainTemplate.MainLeft = MainLeft;
+MainTemplate.Right = Right;
 
 export default MainTemplate;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import AuthEmailSuccess from './AuthEmailSuccess';
 import AuthEmailForm from './AuthEmailForm';
-import useInput from '../../lib/hooks/userInput';
+import useInput from '../../lib/hooks/useInput';
 import AuthSocialButtonGroup from './AuthSocialButtonGroup';
 
 const AuthFormBlock = styled.div`
