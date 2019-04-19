@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { StyledComponent } from 'styled-components';
 import PageTemplate from '../base/PageTemplate';
+import TrendingWeekContainer from '../../containers/main/TrendingWeekContainer';
 
 const MainTemplateBlock = styled(PageTemplate)`
   width: 1400px;
@@ -15,11 +16,11 @@ const MainTemplateBlock = styled(PageTemplate)`
 `;
 
 const MainLeft = styled.header`
-  width: 320px;
+  width: 300px;
   z-index: 910;
 `;
 const Right = styled.div`
-  width: 240px;
+  width: 400px;
   z-index: 910;
 `;
 
@@ -35,6 +36,7 @@ const MainTemplate: React.SFC<MainTemplateProps> & MainTemplateNamespace = ({
 }) => {
   return (
     <MainTemplateBlock>
+      <TrendingWeekContainer />
       <main>{children}</main>
     </MainTemplateBlock>
   );
