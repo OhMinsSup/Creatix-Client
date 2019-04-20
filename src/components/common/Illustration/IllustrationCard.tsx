@@ -8,10 +8,10 @@ import IllustrationFooter from './IllustrationFooter';
 
 const IllustrationCardBlock = styled.div`
   display: block;
-  width: 768px;
+  width: calc(100% - 10rem);
   padding: 1rem 1.8rem;
-  margin-bottom: 1.5rem;
   border-radius: 8px;
+  margin: 0 auto;
   background: #fff;
   transition: background 0.3s ease-in-out;
   > .wrapper {

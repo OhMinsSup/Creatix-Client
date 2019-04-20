@@ -5,7 +5,6 @@ import TrendingWeekContainer from '../../containers/main/TrendingWeekContainer';
 
 const MainTemplateBlock = styled(PageTemplate)`
   width: 1400px;
-  padding: 0 15px;
   max-width: 100%;
   margin: 0 auto;
   main {
@@ -16,17 +15,24 @@ const MainTemplateBlock = styled(PageTemplate)`
 `;
 
 const MainLeft = styled.header`
-  width: 300px;
+  width: 350px;
   z-index: 910;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
-const Right = styled.div`
-  width: 480px;
+
+const MainRight = styled.div`
+  width: 450px;
   z-index: 910;
+  @media (max-width: 1230px) {
+    display: none;
+  }
 `;
 
 type MainTemplateNamespace = {
   MainLeft: typeof MainLeft;
-  Right: typeof Right;
+  MainRight: typeof MainRight;
 };
 
 interface MainTemplateProps {}
@@ -43,6 +49,6 @@ const MainTemplate: React.SFC<MainTemplateProps> & MainTemplateNamespace = ({
 };
 
 MainTemplate.MainLeft = MainLeft;
-MainTemplate.Right = Right;
+MainTemplate.MainRight = MainRight;
 
 export default MainTemplate;

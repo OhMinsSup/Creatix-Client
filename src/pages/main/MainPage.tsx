@@ -16,9 +16,9 @@ const MainPage: React.SFC<MainPageProps> = () => {
       <Switch>
         <Route path="/" component={IllustrationPage} />
       </Switch>
-      <MainTemplate.Right>
+      <MainTemplate.MainRight>
         <FeedContentContainer />
-      </MainTemplate.Right>
+      </MainTemplate.MainRight>
     </MainTemplate>
   );
 };

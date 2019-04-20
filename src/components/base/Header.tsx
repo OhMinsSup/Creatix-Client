@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MdSearch as SearchIcon } from 'react-icons/md';
 import palette from '../../lib/styles/palette';
+import HeaderUserIcon from './HeaderUserIcon';
+import HeaderUserMenu from './HeaderUserMenu';
 
 const HeaderBlock = styled.div<{ floating: boolean }>`
   width: 100%;
@@ -74,42 +76,14 @@ const HeaderLeft = styled.div`
 
 const HeaderRight = styled.div`
   .search-wrapper {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    label {
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 20px;
-      margin-right: 5px;
-      border-width: 0;
-      padding: 0;
-      text-align: left;
-      white-space: normal;
-      color: rgba(0, 0, 0, 0.54);
-      background: rgba(0, 0, 0, 0);
-      transition: 0.1s background-color, 0.1s border-color, 0.1s color,
-        0.1s fill;
-      .wrapper {
-        display: inline-block;
-        line-height: 25px;
-        height: 25px;
-        top: 5px;
-        position: relative;
-        fill: rgba(0, 0, 0, 0.54);
-        vertical-align: middle;
-        transition: 0.1s background-color, 0.1s border-color, 0.1s color,
-          0.1s fill;
-        .search {
-          overflow: hidden;
-        }
-      }
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+    .search {
+      height: 25px;
+      width: 25px;
     }
     .placeholder-search {
       display: inline-block;
-      margin-right: 16px;
-      border-width: 0;
-      padding: 0;
-      top: 7px;
       text-align: left;
       white-space: normal;
       position: relative;
@@ -136,13 +110,13 @@ const HeaderRight = styled.div`
     font-weight: 600;
     background: #fff;
     border: 1px solid ${palette.cyan3};
-    padding: 8px 12px;
     cursor: pointer;
     button {
       border: none;
       outline: none;
       background: white;
       cursor: pointer;
+      padding: 8px 12px;
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.1rem;
@@ -158,11 +132,18 @@ const HeaderRight = styled.div`
 `;
 
 interface HeaderProps {
+  width: number;
+  user: boolean;
   floating: boolean;
   onAuthModalOpen: () => void;
 }
 
-const Header: React.SFC<HeaderProps> = ({ floating, onAuthModalOpen }) => {
+const Header: React.SFC<HeaderProps> = ({
+  floating,
+  onAuthModalOpen,
+  user,
+  width,
+}) => {
   return (
     <HeaderBlock floating={floating}>
       <div className="wrapper">
@@ -174,18 +155,29 @@ const Header: React.SFC<HeaderProps> = ({ floating, onAuthModalOpen }) => {
           </HeaderLeft>
           <HeaderRight className="right">
             <div className="search-wrapper">
-              <label>
-                <span className="wrapper">
-                  <SearchIcon className="search" />
-                </span>
-              </label>
-              <Link to="/search" className="placeholder-search">
-                찾고 싶은 검색어를 입력하세요
-              </Link>
+              {width < 768 ? (
+                <SearchIcon className="search" />
+              ) : (
+                <Link to="/search" className="placeholder-search">
+                  찾고 싶은 검색어를 입력하세요
+                </Link>
+              )}
             </div>
-            <div className="auth-btn">
-              <button onClick={onAuthModalOpen}>로그인/회원가입</button>
-            </div>
+            {user ? (
+              <div>
+                <HeaderUserIcon onClick={() => ({})} />
+                <HeaderUserMenu
+                  onClose={() => ({})}
+                  onLogout={() => ({})}
+                  username="veloss"
+                  visible={false}
+                />
+              </div>
+            ) : (
+              <div className="auth-btn">
+                <button onClick={onAuthModalOpen}>로그인/회원가입</button>
+              </div>
+            )}
           </HeaderRight>
         </div>
       </div>

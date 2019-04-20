@@ -4,6 +4,7 @@ import IllustrationCard from './IllustrationCard';
 
 const IllustrationCardsBlock = styled.div`
   margin: 0 auto;
+  width: 100%;
 `;
 
 interface IllustrationCardsProps {
