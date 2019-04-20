@@ -6,9 +6,6 @@ import CodeQuery from '../../lib/graphql/querys/code/code.query';
 import { CODE } from '../../lib/graphql/querys/code/code.querie';
 import { toast } from 'react-toastify';
 import { LOG_USER_IN } from '../../lib/graphql/shared/shared.querie';
-import { connect } from 'react-redux';
-import { setRegisterToken } from '../../store/modules/auth';
-import { StoreState } from '../../store/modules';
 import { History, Location } from 'history';
 
 const { useState, useEffect } = React;
@@ -17,18 +14,9 @@ interface OwnProps {
   location: Location;
   history: History;
 }
-interface StateProps {}
-interface DispatchProps {
-  setRegisterToken: typeof setRegisterToken;
-}
-type EmailLoginProps = StateProps & DispatchProps & OwnProps;
+type EmailLoginProps = OwnProps;
 const EmailLogin: React.SFC<EmailLoginProps> = props => {
   const [code, setCode] = useState('');
-  const onSetRegister = (email: string, token: string) => {
-    const { setRegisterToken } = props;
-    setRegisterToken({ email, register_token: token });
-  };
-
   useEffect(() => {
     const query = qs.parse(props.location.search, {
       ignoreQueryPrefix: true,
@@ -77,11 +65,6 @@ const EmailLogin: React.SFC<EmailLoginProps> = props => {
                 },
               });
               props.history.push('/');
-            } else if (Code.ok && !!Code.registerResult) {
-              const {
-                registerResult: { email, register_token },
-              } = Code;
-              onSetRegister(email, register_token);
             } else if (!Code.ok && Code.error) {
               toast.error(Code.error);
             }
@@ -96,9 +79,4 @@ const EmailLogin: React.SFC<EmailLoginProps> = props => {
   );
 };
 
-export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
-  () => ({}),
-  {
-    setRegisterToken,
-  },
-)(EmailLogin);
+export default EmailLogin;

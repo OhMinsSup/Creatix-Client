@@ -4,7 +4,7 @@
 export interface sendAuthEmail_SendAuthEmail {
   __typename: 'SendAuthEmailResponse';
   ok: boolean;
-  error: any | null;
+  error: string | null;
   registered: boolean;
 }
 

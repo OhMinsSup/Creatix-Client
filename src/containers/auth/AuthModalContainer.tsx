@@ -24,7 +24,7 @@ interface DispatchProps {
 }
 type AuthModalContainerProps = StateProps & DispatchProps & OwnProps;
 
-const { useCallback } = React;
+const { useCallback, useState } = React;
 const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
   visible,
   mode,
@@ -32,6 +32,7 @@ const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
   closeAuthModal,
 }) => {
   let sendAuthEmailFn: MutationFn<sendAuthEmail, sendAuthEmailVariables>;
+  const [registered, setRegistered] = useState<boolean | null>(null);
 
   const onAuthModalClose = () => {
     closeAuthModal();
@@ -76,13 +77,19 @@ const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
     <AuthModal visible={visible} onAuthModalClose={onAuthModalClose}>
       <SendAuthEmailMutation
         mutation={SEND_AUTH_EMAIL}
-        onError={() => {
+        onError={e => {
+          console.log(e);
           toast.error('이메일 전송을 실패하였습니다.');
         }}
+        onCompleted={data => {
+          const { SendAuthEmail } = data;
+          if (SendAuthEmail.ok && !SendAuthEmail.error) {
+            setRegistered(SendAuthEmail.registered);
+          }
+        }}
       >
-        {(sendAuthEmail, { loading, data }) => {
+        {(sendAuthEmail, { loading }) => {
           sendAuthEmailFn = sendAuthEmail;
-          const registered = data ? data.SendAuthEmail.registered : null;
           return (
             <AuthForm
               mode={mode}

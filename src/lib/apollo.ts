@@ -55,10 +55,14 @@ const wsLink = new WebSocketLink({
   uri: 'ws://localhost:4000/subscription',
 });
 
-const combinedLinks = split(({ query }) => {
-  const { kind, operation }: any = getMainDefinition(query);
-  return kind === 'OperationDefinition' && operation === 'subscriptions';
-}, httpLink);
+const combinedLinks = split(
+  ({ query }) => {
+    const { kind, operation }: any = getMainDefinition(query);
+    return kind === 'OperationDefinition' && operation === 'subscriptions';
+  },
+  wsLink,
+  httpLink,
+);
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
