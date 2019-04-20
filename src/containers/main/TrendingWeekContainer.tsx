@@ -6,11 +6,14 @@ const { useState } = React;
 
 interface TrendingWeekContainerProps {}
 const TrendingWeekContainer: React.SFC<TrendingWeekContainerProps> = () => {
-  // TODO 타입은 추후 추가 할 예정
   type ListingType = 'ILLUST' | 'BOOKS';
-  const [listing, setListing] = useState('ILLUST');
+  const [listing, setListing] = useState<ListingType>('ILLUST');
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setListing(e.target.value as ListingType);
+  };
+
   return (
-    <MainTrendingContents>
+    <MainTrendingContents listing={listing} onChange={onChange} title={listing}>
       <ContentsCards />
     </MainTrendingContents>
   );

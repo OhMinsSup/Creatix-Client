@@ -74,6 +74,8 @@ const HeaderLeft = styled.div`
 
 const HeaderRight = styled.div`
   .search-wrapper {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
     label {
       display: inline-block;
       vertical-align: middle;

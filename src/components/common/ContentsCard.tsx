@@ -44,13 +44,14 @@ const ContentsCardBlock = styled.div<{ url: string }>`
 
 interface ContentsCardProps {
   url: string;
+  title: string;
 }
-const ContentsCard: React.SFC<ContentsCardProps> = ({ url }) => {
+const ContentsCard: React.SFC<ContentsCardProps> = ({ url, title }) => {
   return (
     <ContentsCardBlock url={url}>
       <Link to="/" />
       <div className="meta">
-        <h1>제목입니다.</h1>
+        <h1>{title}</h1>
       </div>
     </ContentsCardBlock>
   );

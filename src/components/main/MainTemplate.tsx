@@ -20,7 +20,7 @@ const MainLeft = styled.header`
   z-index: 910;
 `;
 const Right = styled.div`
-  width: 400px;
+  width: 480px;
   z-index: 910;
 `;
 
