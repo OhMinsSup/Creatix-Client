@@ -5,7 +5,7 @@ import { MutationFn, Mutation } from 'react-apollo';
 import { toast } from 'react-toastify';
 import { Location, History } from 'history';
 import { StoreState } from '../../store/modules';
-import { setRegisterToken } from '../../store/modules/auth';
+import { setRegisterToken, setUserData } from '../../store/modules/auth';
 import RegisterForm, {
   RegisterFormType,
 } from '../../components/register/RegisterForm';
@@ -30,12 +30,14 @@ interface StateProps {
   registerToken: string | null;
 }
 interface DispatchProps {
+  setUserData: typeof setUserData;
   setRegisterToken: typeof setRegisterToken;
 }
 type RegisterFormContainerProps = StateProps & DispatchProps & OwnProps;
 const RegisterFormContainer: React.SFC<RegisterFormContainerProps> = ({
   email,
   registerToken,
+  setUserData,
   setRegisterToken,
   location,
   history,
@@ -60,14 +62,48 @@ const RegisterFormContainer: React.SFC<RegisterFormContainerProps> = ({
   };
 
   const onSubmit = async (form: RegisterFormType) => {
+    setError(null);
+    // validate
+    const validation = {
+      displayName: (text: string) => {
+        if (text === '') {
+          return '이름을 입력해주세요.';
+        }
+        if (text.length > 45) {
+          return '이름은 최대 45자까지 입력 할 수 있습니다.';
+        }
+      },
+      username: (text: string) => {
+        if (!/^[a-z0-9-_]{3,16}$/.test(text)) {
+          return '아이디는 3~16자의 알파벳,숫자,혹은 - _ 으로 이루어져야 합니다.';
+        }
+      },
+      shortBio: (text: string) => {
+        if (text.length > 140) {
+          return `한 줄 소개는 140자 미만으로 입력해주세요. (현재 ${
+            text.length
+          }자)`;
+        }
+      },
+    };
+
+    const error =
+      validation.displayName(form.displayName) ||
+      validation.username(form.username) ||
+      validation.shortBio(form.shortBio) ||
+      null;
+
+    if (error) {
+      setError(error);
+      return;
+    }
+
     localRegisterFn({
       variables: {
         register_token: registerToken || '',
-        form: {
-          display_name: form.displayName,
-          username: form.username,
-          short_bio: form.shortBio,
-        },
+        display_name: form.displayName,
+        username: form.username,
+        short_bio: form.shortBio || 'creatix에 오신것을 환영합니다.',
       },
     });
   };
@@ -105,28 +141,35 @@ const RegisterFormContainer: React.SFC<RegisterFormContainerProps> = ({
                         access_token,
                       },
                     } = LocalRegister;
+                    const user = Object.assign(
+                      {},
+                      {
+                        id,
+                        email,
+                        username,
+                        display_name,
+                        thumbnail,
+                      },
+                    );
                     logUserIn({
                       variables: {
                         token: {
                           accessToken: access_token,
                           refreshToken: refresh_token,
                         },
-                        user: {
-                          id,
-                          email,
-                          username,
-                          display_name,
-                          thumbnail,
-                        },
+                        user,
                       },
                     });
+                    setUserData({ user });
                     history.push('/');
+                  } else if (!LocalRegister.ok && LocalRegister.payload) {
+                    setError(LocalRegister.payload);
                   } else if (!LocalRegister.ok && LocalRegister.error) {
                     toast.error(LocalRegister.error);
                   }
                 }}
               >
-                {(localRegister, { loading }) => {
+                {localRegister => {
                   localRegisterFn = localRegister;
                   return (
                     <RegisterForm
@@ -151,6 +194,7 @@ export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
     registerToken: auth.register && auth.register.register_token,
   }),
   {
+    setUserData,
     setRegisterToken,
   },
 )(RegisterFormContainer);

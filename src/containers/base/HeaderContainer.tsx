@@ -8,6 +8,7 @@ import { StoreState } from '../../store/modules';
 interface OwnProps {}
 interface StateProps {
   width: number;
+  logged: boolean;
 }
 interface DispatchProps {
   openAuthModal: typeof openAuthModal;
@@ -18,6 +19,7 @@ const { useEffect, useCallback, useState } = React;
 
 const HeaderContainer: React.SFC<HeaderContainerProps> = ({
   width,
+  logged,
   openAuthModal,
 }) => {
   const [floating, setFloating] = useState(false);
@@ -42,20 +44,19 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = ({
     return reset;
   });
 
-  const user = false;
-
   return (
     <Header
       width={width}
       floating={floating}
       onAuthModalOpen={onAuthModalOpen}
-      user={user}
+      user={logged}
     />
   );
 };
 
 export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
-  ({ base }) => ({
+  ({ base, auth }) => ({
+    logged: !!(auth.user && auth.user),
     width: base.layer.width,
   }),
   {

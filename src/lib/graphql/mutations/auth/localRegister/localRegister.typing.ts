@@ -25,9 +25,7 @@ export interface localRegister {
 
 export interface localRegisterVariables {
   register_token: string;
-  form: {
-    display_name: string;
-    username: string;
-    short_bio: string;
-  };
+  display_name: string;
+  username: string;
+  short_bio: string;
 }

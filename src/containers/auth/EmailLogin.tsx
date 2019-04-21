@@ -7,6 +7,9 @@ import { CODE } from '../../lib/graphql/querys/code/code.querie';
 import { toast } from 'react-toastify';
 import { LOG_USER_IN } from '../../lib/graphql/shared/shared.querie';
 import { History, Location } from 'history';
+import { connect } from 'react-redux';
+import { StoreState } from '../../store/modules';
+import { setUserData } from '../../store/modules/auth';
 
 const { useState, useEffect } = React;
 
@@ -14,7 +17,11 @@ interface OwnProps {
   location: Location;
   history: History;
 }
-type EmailLoginProps = OwnProps;
+interface StateProps {}
+interface DispatchProps {
+  setUserData: typeof setUserData;
+}
+type EmailLoginProps = StateProps & DispatchProps & OwnProps;
 const EmailLogin: React.SFC<EmailLoginProps> = props => {
   const [code, setCode] = useState('');
   useEffect(() => {
@@ -49,21 +56,26 @@ const EmailLogin: React.SFC<EmailLoginProps> = props => {
                   thumbnail,
                 },
               } = Code;
+              const user = Object.assign(
+                {},
+                {
+                  id,
+                  email,
+                  username,
+                  display_name,
+                  thumbnail,
+                },
+              );
               logUserIn({
                 variables: {
                   token: {
                     accessToken: access_token,
                     refreshToken: refresh_token,
                   },
-                  user: {
-                    id,
-                    email,
-                    username,
-                    display_name,
-                    thumbnail,
-                  },
+                  user,
                 },
               });
+              props.setUserData({ user });
               props.history.push('/');
             } else if (!Code.ok && Code.error) {
               toast.error(Code.error);
@@ -79,4 +91,9 @@ const EmailLogin: React.SFC<EmailLoginProps> = props => {
   );
 };
 
-export default EmailLogin;
+export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
+  () => ({}),
+  {
+    setUserData,
+  },
+)(EmailLogin);

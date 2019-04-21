@@ -8,11 +8,11 @@ type CodeRegister = {
 };
 
 type CodeLogin = {
-  id: String;
-  username: String;
-  email: String;
-  display_name: String;
-  thumbnail: String;
+  id: string;
+  username: string;
+  email: string;
+  display_name: string;
+  thumbnail: string | null;
   access_token: string;
   refresh_token: string;
 };

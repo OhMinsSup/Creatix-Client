@@ -77,10 +77,6 @@ const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
     <AuthModal visible={visible} onAuthModalClose={onAuthModalClose}>
       <SendAuthEmailMutation
         mutation={SEND_AUTH_EMAIL}
-        onError={e => {
-          console.log(e);
-          toast.error('이메일 전송을 실패하였습니다.');
-        }}
         onCompleted={data => {
           const { SendAuthEmail } = data;
           if (SendAuthEmail.ok && !SendAuthEmail.error) {
