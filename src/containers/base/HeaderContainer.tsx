@@ -23,6 +23,7 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = ({
   openAuthModal,
 }) => {
   const [floating, setFloating] = useState(false);
+
   const onScroll = useCallback(() => {
     const scrollTop = getScrollTop();
     if (floating && scrollTop === 0) {

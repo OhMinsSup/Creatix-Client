@@ -5,6 +5,7 @@ import { MdSearch as SearchIcon } from 'react-icons/md';
 import palette from '../../lib/styles/palette';
 import HeaderUserIcon from './HeaderUserIcon';
 import HeaderUserMenu from './HeaderUserMenu';
+import useToggle from '../../lib/hooks/useToggle';
 
 const HeaderBlock = styled.div<{ floating: boolean }>`
   width: 100%;
@@ -144,6 +145,8 @@ const Header: React.SFC<HeaderProps> = ({
   user,
   width,
 }) => {
+  const [userMenu, toggleUserMenu] = useToggle(false);
+
   return (
     <HeaderBlock floating={floating}>
       <div className="wrapper">
@@ -165,12 +168,12 @@ const Header: React.SFC<HeaderProps> = ({
             </div>
             {user ? (
               <div>
-                <HeaderUserIcon onClick={() => ({})} />
+                <HeaderUserIcon onClick={toggleUserMenu} />
                 <HeaderUserMenu
-                  onClose={() => ({})}
+                  onClose={toggleUserMenu}
                   onLogout={() => ({})}
                   username="veloss"
-                  visible={false}
+                  visible={userMenu}
                 />
               </div>
             ) : (

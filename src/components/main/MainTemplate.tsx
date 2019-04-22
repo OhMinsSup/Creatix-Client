@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import PageTemplate from '../base/PageTemplate';
 import TrendingWeekContainer from '../../containers/main/TrendingWeekContainer';
 

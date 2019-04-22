@@ -1,8 +1,4 @@
-import { useState, useReducer, useCallback } from 'react';
-
-type DefaultValues = {
-  [key: string]: string;
-};
+import { useReducer, useCallback } from 'react';
 
 type UseInputsAction = {
   name: string;
