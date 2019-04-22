@@ -31,25 +31,6 @@ const IllustImagesAreaBlock = styled.div`
         height: 100%;
         border: 2px dashed rgb(218, 218, 218);
         border-radius: 6px;
-        .text {
-          position: absolute;
-          overflow: hidden;
-          margin: 32px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          padding-left: 10px;
-          padding-right: 10px;
-          padding-top: 5px;
-          padding-bottom: 5px;
-          span {
-            text-align: center;
-            font-weight: 400;
-            letter-spacing: -0.4px;
-            font-size: 14px;
-            color: #8e8e8e;
-          }
-        }
         .upload-icon {
           padding: 8px;
           svg {
@@ -87,9 +68,6 @@ class IllustImagesArea extends React.Component {
         <div className="upload-image">
           <div className="wrapper">
             <div className="inner">
-              <div className="text">
-                <span>권장사항:10MB 이하의 고화질 파일을 사용하세요</span>
-              </div>
               <div className="upload-icon">
                 <UploadIcon />
               </div>

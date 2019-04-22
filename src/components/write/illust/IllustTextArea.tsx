@@ -1,18 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import LabelInput from '../../common/LabelInput';
 import LabelTextArea from '../../common/LabelTextArea';
 import InputTags from '../../common/InputTags';
 import palette from '../../../lib/styles/palette';
 
-const CheckBoxArea: React.SFC<{
+const Toggler: React.SFC<{
   value: boolean;
-  onChange: () => void;
-}> = ({ value, onChange }) => {
+  onClick: () => void;
+}> = ({ value, onClick }) => {
   return (
-    <div className="wrapper">
-      {value ? <span>비공개</span> : <span>공개</span>}
-      <input type="checkbox" defaultChecked={value} onChange={onChange} />
+    <div className="toggler">
+      <div className="toggle-box" onClick={onClick}>
+        <div className="circle" />
+      </div>
+      {value ? (
+        <div className="text">비공개</div>
+      ) : (
+        <div className="text">공개</div>
+      )}
     </div>
   );
 };
@@ -31,27 +37,56 @@ const IllustTextAreaBlock = styled.div`
   }
 `;
 
-const CheckBoxBlock = styled.div`
+const TogglerBlock = styled.div<{ visible: boolean }>`
   display: flex;
   flex-direction: row;
   label {
     font-weight: bold;
     font-size: 1.125rem;
     color: ${palette.gray9};
-    margin-bottom: 1rem;
     transition: all 0.125s ease-in;
   }
-  > .wrapper {
-    margin-left: 1.1rem;
-    span {
-      font-weight: bold;
-      font-size: 0.85rem;
-      color: ${palette.gray9};
-    }
-  }
-
-  .wrapper + .wrapper {
+  .toggler {
+    display: flex;
+    align-items: center;
     margin-left: 1rem;
+    & + .toggler {
+      margin-top: 0.5rem;
+    }
+    .toggle-box {
+      background: ${palette.gray3};
+      height: 32px;
+      width: 56px;
+      border-radius: 16px;
+      position: relative;
+      margin-right: 0.5rem;
+      cursor: pointer;
+      transition: 0.125s ease-in background;
+      .circle {
+        transition: 0.125s ease-in transform;
+        background: white;
+        width: 24px;
+        height: 24px;
+        top: 4px;
+        left: 4px;
+        border-radius: 12px;
+        position: absolute;
+      }
+
+      ${props =>
+        props.visible &&
+        css`
+          background: ${palette.cyan4};
+          .circle {
+            transform: translate(24px);
+          }
+        `}
+    }
+    .text {
+      font-size: 0.875rem;
+      color: ${palette.gray9};
+      font-weight: 600;
+    }
   }
 `;
 
@@ -99,10 +134,10 @@ const IllustTextArea: React.SFC<IllustTextAreaProps> = ({
           onRemove={onRemove}
         />
       </div>
-      <CheckBoxBlock>
+      <TogglerBlock visible={visible}>
         <label>공개 범위</label>
-        <CheckBoxArea value={visible} onChange={onToggleCheck} />
-      </CheckBoxBlock>
+        <Toggler value={visible} onClick={onToggleCheck} />
+      </TogglerBlock>
     </IllustTextAreaBlock>
   );
 };

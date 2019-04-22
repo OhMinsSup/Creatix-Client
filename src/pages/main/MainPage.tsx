@@ -7,20 +7,18 @@ import FeedContentContainer from '../../containers/main/FeedContentContainer';
 
 interface MainPageProps {}
 
-const MainPage: React.SFC<MainPageProps> = () => {
-  return (
-    <MainTemplate>
-      <MainTemplate.MainLeft>
-        <MainSideMenu />
-      </MainTemplate.MainLeft>
-      <Switch>
-        <Route path="/" component={IllustrationPage} />
-      </Switch>
-      <MainTemplate.MainRight>
-        <FeedContentContainer />
-      </MainTemplate.MainRight>
-    </MainTemplate>
-  );
-};
+const MainPage: React.SFC<MainPageProps> = () => (
+  <MainTemplate>
+    <MainTemplate.MainLeft>
+      <MainSideMenu />
+    </MainTemplate.MainLeft>
+    <Switch>
+      <Route path="/" component={IllustrationPage} />
+    </Switch>
+    <MainTemplate.MainRight>
+      <FeedContentContainer />
+    </MainTemplate.MainRight>
+  </MainTemplate>
+);
 
 export default MainPage;

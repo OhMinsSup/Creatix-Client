@@ -68,11 +68,12 @@ const render = async (req: Request, res: Response, next: NextFunction) => {
   );
 
   const jsx = extractor.collectChunks(Root);
+  console.log(jsx);
 
   try {
     await getDataFromTree(jsx);
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 
   const initialState = client.extract();
@@ -81,6 +82,7 @@ const render = async (req: Request, res: Response, next: NextFunction) => {
   ).replace(/</g, '\\u003c')}</script>`;
   const sheet = new ServerStyleSheet();
   const rendered = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
+
   const scStyles = sheet.getStyleTags();
   const collected = {
     script: apolloStateScript + extractor.getScriptTags(),

@@ -6,8 +6,6 @@ interface EmailLoginPageProps extends RouteComponentProps {}
 const EmailLoginPage: React.SFC<EmailLoginPageProps> = ({
   location,
   history,
-}) => {
-  return <EmailLogin history={history} location={location} />;
-};
+}) => <EmailLogin history={history} location={location} />;
 
 export default withRouter(EmailLoginPage);

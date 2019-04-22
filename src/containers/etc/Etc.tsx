@@ -1,8 +1,12 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import AuthModalContainer from '../auth/AuthModalContainer';
 import { withRouter, RouteComponentProps } from 'react-router';
+
+const isBrowser = process.env.APP_ENV === 'browser';
+if (isBrowser) {
+  require('react-toastify/dist/ReactToastify.min.css');
+}
 
 interface EtcProps extends RouteComponentProps {}
 const Etc: React.SFC<EtcProps> = () => {

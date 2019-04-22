@@ -12,12 +12,10 @@ const IllustrationPageBlock = styled.div`
 
 interface IllustrationPageProps {}
 
-const IllustrationPage: React.SFC<IllustrationPageProps> = () => {
-  return (
-    <IllustrationPageBlock>
-      <IllustrationList />
-    </IllustrationPageBlock>
-  );
-};
+const IllustrationPage: React.SFC<IllustrationPageProps> = () => (
+  <IllustrationPageBlock>
+    <IllustrationList />
+  </IllustrationPageBlock>
+);
 
 export default IllustrationPage;

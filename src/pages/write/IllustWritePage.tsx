@@ -5,12 +5,10 @@ import WrtieIllustContainer from '../../containers/wrtie/WrtieIllustContainer';
 
 interface IllustWritePageProps extends RouteComponentProps {}
 
-const IllustWritePage: React.SFC<IllustWritePageProps> = () => {
-  return (
-    <WriteIllustTemplate>
-      <WrtieIllustContainer />
-    </WriteIllustTemplate>
-  );
-};
+const IllustWritePage: React.SFC<IllustWritePageProps> = () => (
+  <WriteIllustTemplate>
+    <WrtieIllustContainer />
+  </WriteIllustTemplate>
+);
 
 export default withRouter(IllustWritePage);
