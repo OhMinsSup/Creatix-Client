@@ -18,6 +18,7 @@
     "@types/lodash": "^4.14.123",
     "@types/node": "11.10.4",
     "@types/qs": "^6.5.3",
+    "@types/quill": "^2.0.2",
     "@types/react": "16.8.6",
     "@types/react-dom": "16.8.2",
     "@types/react-icon-base": "^2.1.3",
@@ -78,6 +79,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
     "qs": "^6.7.0",
+    "quill": "^1.3.6",
     "react": "^16.8.4",
     "react-apollo": "^2.5.3",
     "react-app-polyfill": "^0.2.1",
@@ -114,7 +116,8 @@
     "ssr": "node dist/server.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "text": "exit",
+    "test:client": "node scripts/test.js",
     "build:ssr": "node scripts/build.ssr.js"
   },
   "eslintConfig": {
@@ -179,5 +182,6 @@
       "@loadable/babel-plugin"
     ]
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {}
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaAngleLeft as LeftIcon } from 'react-icons/fa';
 import palette from '../../../lib/styles/palette';
+import { Link } from 'react-router-dom';
 
 const IllustSubmitAreaBlock = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const IllustSubmitAreaBlock = styled.div`
     flex-direction: row;
     align-items: center;
     min-height: 40px;
+    color: ${palette.gray7};
     border: none;
     cursor: pointer;
     background: transparent;
@@ -45,6 +47,9 @@ const IllustSubmitAreaBlock = styled.div`
       border-radius: 8px;
       outline: 0;
       padding: 8px 10px;
+      &:hover {
+        background: ${palette.cyan2};
+      }
       .write {
         color: white;
         font-size: 16px;
@@ -60,11 +65,11 @@ interface IllustSubmitAreaProps {}
 const IllustSubmitArea: React.SFC<IllustSubmitAreaProps> = () => {
   return (
     <IllustSubmitAreaBlock>
-      <button className="back-btn">
+      <Link to="/" className="back-btn">
         <div className="wrapper">
           <LeftIcon className="back-icon" />
         </div>
-      </button>
+      </Link>
       <button className="write-btn">
         <div className="wrapper">
           <div className="write">작성하기</div>

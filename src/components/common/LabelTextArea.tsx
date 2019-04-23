@@ -37,9 +37,6 @@ const LabelTextAreaBlock = styled.div<{ focus: boolean }>`
     &::placeholder {
       color: ${palette.gray5};
     }
-    &:disabled {
-      color: ${palette.gray6};
-    }
   }
   .group {
     display: inline-block;

@@ -10,6 +10,7 @@ const IllustImagesAreaBlock = styled.div`
   height: 510px;
   padding-left: 20px;
   padding-right: 20px;
+  cursor: pointer;
   .upload-image {
     flex: 1 1 auto;
     min-height: 0;
@@ -61,11 +62,59 @@ const IllustImagesAreaBlock = styled.div`
   }
 `;
 
-class IllustImagesArea extends React.Component {
+interface IllustImagesAreaProps {
+  onUploadClick: () => void;
+  onDrop: (e: DragEvent) => void;
+  onPasteImage: (file: File) => void;
+}
+
+class IllustImagesArea extends React.Component<IllustImagesAreaProps> {
+  onDragOver = (e: DragEvent) => {
+    e.preventDefault();
+  };
+
+  onPaste = (e: ClipboardEvent) => {
+    const { items } = e.clipboardData;
+    if (items.length !== 2) return;
+    if (items[1].kind !== 'file') return;
+    const file = items[1].getAsFile();
+    // TODO Props (file)
+    e.preventDefault();
+  };
+
+  applyListeners = () => {
+    if (window) {
+      window.addEventListener('drop', this.props.onDrop);
+      window.addEventListener('dragover', this.onDragOver);
+    }
+    if (document && document.body) {
+      document.body.removeEventListener('paste', this.onPaste);
+    }
+  };
+
+  removeListeners = () => {
+    if (window) {
+      window.removeEventListener('drop', this.props.onDrop);
+      window.removeEventListener('dragover', this.onDragOver);
+    }
+    if (document && document.body) {
+      document.body.removeEventListener('paste', this.onPaste);
+    }
+  };
+
+  componentDidMount() {
+    this.applyListeners();
+  }
+
+  componentWillUnmount() {
+    this.removeListeners();
+  }
+
   render() {
+    const { onUploadClick } = this.props;
     return (
       <IllustImagesAreaBlock>
-        <div className="upload-image">
+        <div className="upload-image" onClick={onUploadClick}>
           <div className="wrapper">
             <div className="inner">
               <div className="upload-icon">

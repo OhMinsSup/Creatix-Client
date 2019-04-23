@@ -32,8 +32,16 @@ export type IllustTextFormType = {
 
 const { useState } = React;
 
-interface WriteIllustFormProps {}
-const WriteIllustForm: React.SFC<WriteIllustFormProps> = () => {
+interface WriteIllustFormProps {
+  onUploadClick: () => void;
+  onDrop: (e: DragEvent) => void;
+  onPasteImage: (file: File) => void;
+}
+const WriteIllustForm: React.SFC<WriteIllustFormProps> = ({
+  onUploadClick,
+  onDrop,
+  onPasteImage,
+}) => {
   const [form, onChange] = useInputs<IllustTextFormType>({
     title: '',
     description: '',
@@ -69,7 +77,11 @@ const WriteIllustForm: React.SFC<WriteIllustFormProps> = () => {
       <div className="form">
         <IllustSubmitArea />
         <div className="contents">
-          <IllustImagesArea />
+          <IllustImagesArea
+            onDrop={onDrop}
+            onPasteImage={onPasteImage}
+            onUploadClick={onUploadClick}
+          />
           <IllustTextArea
             title={form.title}
             description={form.description}

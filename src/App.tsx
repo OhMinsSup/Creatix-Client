@@ -8,6 +8,7 @@ const MainPage = loadable(() => import('./pages/main/MainPage'));
 const RegisterPage = loadable(() => import('./pages/RegisterPage'));
 const EmailLoginPage = loadable(() => import('./pages/EmailLoginPage'));
 const IllustWritePage = loadable(() => import('./pages/write/IllustWritePage'));
+const BooksWritePage = loadable(() => import('./pages/write/BooksWritePage'));
 
 interface AppProps {}
 const App: React.SFC<AppProps> = () => {
@@ -19,6 +20,7 @@ const App: React.SFC<AppProps> = () => {
         <Route path="/email-login" render={() => <EmailLoginPage />} />
         <Route path="/register" render={() => <RegisterPage />} />
         <Route path="/write/illust" render={() => <IllustWritePage />} />
+        <Route path="/write/books" render={() => <BooksWritePage />} />
       </Switch>
       <Core />
       <Etc />

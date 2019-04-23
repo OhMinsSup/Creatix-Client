@@ -13,3 +13,8 @@ export const getScrollBottom = () => {
   const scrollTop = getScrollTop();
   return scrollHeight - innerHeight - scrollTop;
 };
+
+export function detectJSDOM() {
+  if (typeof navigator === 'undefined') return false;
+  return navigator.userAgent.includes('jsdom');
+}
