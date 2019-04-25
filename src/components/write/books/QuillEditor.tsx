@@ -12,8 +12,9 @@ import { getScrollTop, detectJSDOM } from '../../../lib/utils';
 Quill.register('modules/markdownShortcuts', MarkdownShortcuts);
 
 export interface QuillEditorProps {
-  onChangeTitle: (title: string) => void;
   title: string;
+  onChangeTitle: (title: string) => void;
+  onClickSubmitModal: () => void;
 }
 export interface QuillEditorState {
   titleFocus: boolean;
@@ -327,7 +328,7 @@ export default class QuillEditor extends React.Component<
   };
 
   public render() {
-    const { title } = this.props;
+    const { title, onClickSubmitModal } = this.props;
     const {
       addLink,
       addLinkPosition,
@@ -349,7 +350,7 @@ export default class QuillEditor extends React.Component<
           onChange={this.handleChangeTitle}
           value={title}
         />
-        <Toolbar shadow={shadow} />
+        <Toolbar shadow={shadow} onClickSubmitModal={onClickSubmitModal} />
         <Editor>
           <div ref={this.editor} tabIndex={2} />
           {addLink && (

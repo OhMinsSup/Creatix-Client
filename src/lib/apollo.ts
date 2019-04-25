@@ -14,33 +14,29 @@ const getToken = () => {
   const storage = StorageProvider.localStorage('creatix');
   const accessToken = storage.get('access_token');
   const refreshToken = storage.get('refresh_token');
-  if (accessToken && refreshToken) {
-    return {
-      accessToken,
-      refreshToken,
-    };
-  } else {
-    return {
-      accessToken: '',
-      refreshToken: '',
-    };
-  }
+  return {
+    accessToken,
+    refreshToken,
+  };
 };
 
+const cache = new InMemoryCache().restore((window as any).__APOLLO_STATE__);
+
 const authMiddleware = new ApolloLink((operation: Operation, forward: any) => {
-  const { accessToken, refreshToken } = getToken();
+  const storage = StorageProvider.localStorage('creatix');
+  const accessToken = storage.get('access_token');
+  const refreshToken = storage.get('refresh_token');
+
   operation.setContext({
     headers: {
-      access_token: accessToken,
-      refresh_token: refreshToken,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
   return forward(operation);
 });
 
-const cache = new InMemoryCache();
-
 const httpLink = new HttpLink({
+  credentials: 'include',
   uri: 'http://localhost:4000/graphql',
 });
 
