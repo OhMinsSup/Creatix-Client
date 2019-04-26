@@ -20,14 +20,16 @@ cache:
 
 script:
   - npm test
+  - npm run build
 
 deploy:  # 배포
   provider: s3
+  skip_cleanup: true #  Travis CI가 빌드 아티팩트를 삭제하지 못하도록하기위해
   access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
-  secret_access_key: $AWS_SECRET_KEY  # Travis repo settings에 설정된 값
+  secret_access_key: 
+    secure: $AWS_SECRET_KEY  # Travis repo settings에 설정된 값
   bucket: "veloss-creatix-deploy" # S3에 생성한 버킷
   region: ap-northeast-2
-  skip_cleanup: true #  Travis CI가 빌드 아티팩트를 삭제하지 못하도록하기위해
   local_dir: build # build 디렉터리에 있는 파일을 s3로 업로드 하겠다는 의미
   acl: public_read
   on:
