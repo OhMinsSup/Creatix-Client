@@ -32,8 +32,8 @@ deploy:  # 배포
   local_dir: build # build 디렉터리에 있는 파일을 s3로 업로드 하겠다는 의미
   acl: public_read
   on:
-      repo: OhMinsSup/creatix-client #Github 주소
-      branch: master
+    repo: OhMinsSup/creatix-client #Github 주소
+    branch: master
 after_deploy:
   - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY -s $AWS_SECRET_KEY -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST -o 'master'
 # 빌드 성공및 실패에 대한 알림을 받을 이메일
