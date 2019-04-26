@@ -4,6 +4,11 @@ import { getScrollTop } from '../../lib/utils';
 import { connect } from 'react-redux';
 import { openAuthModal } from '../../store/modules/base';
 import { StoreState } from '../../store/modules';
+import { Mutation, MutationFn } from 'react-apollo';
+import { LOG_USER_OUT } from '../../lib/graphql/shared/shared.querie';
+import LogOutMutation from '../../lib/graphql/mutations/auth/logout/logout.mutation';
+import { LOTOUT } from '../../lib/graphql/mutations/auth/logout/logout.querie';
+import { logout } from '../../lib/graphql/mutations/auth/logout/logout.typing';
 
 interface OwnProps {}
 interface StateProps {
@@ -22,6 +27,7 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = ({
   logged,
   openAuthModal,
 }) => {
+  let logOutMutationFn: MutationFn<logout, null>;
   const [floating, setFloating] = useState(false);
 
   const onScroll = useCallback(() => {
@@ -32,6 +38,11 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = ({
     }
     setFloating(true);
   }, [floating]);
+
+  const onLogOut = () => {
+    logOutMutationFn();
+    window.location.href = '/';
+  };
 
   const onAuthModalOpen = () => {
     openAuthModal();
@@ -46,12 +57,34 @@ const HeaderContainer: React.SFC<HeaderContainerProps> = ({
   });
 
   return (
-    <Header
-      width={width}
-      floating={floating}
-      onAuthModalOpen={onAuthModalOpen}
-      user={logged}
-    />
+    <Mutation mutation={LOG_USER_OUT}>
+      {logUserOut => (
+        <LogOutMutation
+          mutation={LOTOUT}
+          onCompleted={data => {
+            const {
+              LogOut: { ok },
+            } = data;
+            if (ok) {
+              logUserOut();
+            }
+          }}
+        >
+          {logOut => {
+            logOutMutationFn = logOut;
+            return (
+              <Header
+                width={width}
+                floating={floating}
+                onAuthModalOpen={onAuthModalOpen}
+                user={logged}
+                onLogOut={onLogOut}
+              />
+            );
+          }}
+        </LogOutMutation>
+      )}
+    </Mutation>
   );
 };
 

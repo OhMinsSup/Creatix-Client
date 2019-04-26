@@ -137,6 +137,7 @@ interface HeaderProps {
   user: boolean;
   floating: boolean;
   onAuthModalOpen: () => void;
+  onLogOut: () => void;
 }
 
 const Header: React.SFC<HeaderProps> = ({
@@ -144,6 +145,7 @@ const Header: React.SFC<HeaderProps> = ({
   onAuthModalOpen,
   user,
   width,
+  onLogOut,
 }) => {
   const [userMenu, toggleUserMenu] = useToggle(false);
 
@@ -171,7 +173,7 @@ const Header: React.SFC<HeaderProps> = ({
                 <HeaderUserIcon onClick={toggleUserMenu} />
                 <HeaderUserMenu
                   onClose={toggleUserMenu}
-                  onLogout={() => ({})}
+                  onLogout={onLogOut}
                   username="veloss"
                   visible={userMenu}
                 />

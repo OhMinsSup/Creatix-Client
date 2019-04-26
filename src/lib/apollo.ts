@@ -6,9 +6,9 @@ import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
+import { toast } from 'react-toastify';
 
 import StorageProvider from './StorageProvider';
-import { toast } from 'react-toastify';
 
 const getToken = () => {
   const storage = StorageProvider.localStorage('creatix');
@@ -29,7 +29,7 @@ const authMiddleware = new ApolloLink((operation: Operation, forward: any) => {
 
   operation.setContext({
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: accessToken ? `Bearer ${accessToken}` : '',
     },
   });
   return forward(operation);
