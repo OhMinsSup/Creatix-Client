@@ -116,7 +116,7 @@
     "ssr": "node ./dist/server.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "text": "exit",
+    "test": "exit",
     "test:client": "node scripts/test.js",
     "build:ssr": "node scripts/build.ssr.js"
   },

@@ -3,7 +3,8 @@ node_js:
   - "10.14" # node_js에 버전 10.14.1
 
 install:
-  - npm install -g travis-ci-cloudfront-invalidation
+  - pip install awscli
+  # - npm install -g travis-ci-cloudfront-invalidation
 
 # Git 커밋을 한 내용중 수신 허용 목록을
 # 사용하여 분기를 포함하거나 차단 목록을 사용하여 분기를 제외하십시오.
@@ -34,8 +35,13 @@ deploy:  # 배포
   on:
     repo: OhMinsSup/creatix-client #Github 주소
     branch: master
+
 after_deploy:
-  - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY -s $AWS_SECRET_KEY -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST -o 'master'
+  # AWS CLI가 CloudFront에 요청을하도록 허용합니다.
+  - aws configure set preview.cloudfront true
+  # 대상 배포판의 모든 객체를 무효화합니다.
+  - aws cloudfront create-invalidation --profile=creatix-deploy-s3 --distribution-id $AWS_CLOUDFRONT_DIST_ID --paths / /index.html /error.html /service-worker.js /manifest.json /favicon.ico
+  # - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY -s $AWS_SECRET_KEY -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST -o 'master'
 # 빌드 성공및 실패에 대한 알림을 받을 이메일
 notifications:
   email:
