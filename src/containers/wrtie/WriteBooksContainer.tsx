@@ -1,10 +1,10 @@
 import React from 'react';
 import QuillEditor from '../../components/write/books/QuillEditor';
-import WriteBooksSubmitModal from './WriteBooksSubmitModal';
+import PublishScreen from './PublishScreen';
 
 interface WriteBooksContainerState {
   title: string;
-  submitModal: boolean;
+  publish: boolean;
 }
 interface WriteBooksContainerProps {}
 class WriteBooksContainer extends React.Component<
@@ -15,7 +15,7 @@ class WriteBooksContainer extends React.Component<
     super(props);
     this.state = {
       title: '',
-      submitModal: true,
+      publish: true,
     };
   }
 
@@ -25,22 +25,22 @@ class WriteBooksContainer extends React.Component<
     });
   };
 
-  onClickSubmitModal = () => {
+  onClickPublish = () => {
     this.setState({
-      submitModal: true,
+      publish: !this.state.publish,
     });
   };
 
   render() {
-    const { title, submitModal } = this.state;
+    const { title, publish } = this.state;
     return (
       <React.Fragment>
         <QuillEditor
           title={title}
           onChangeTitle={this.onChangeTitle}
-          onClickSubmitModal={this.onClickSubmitModal}
+          onClickPublish={this.onClickPublish}
         />
-        <WriteBooksSubmitModal visible={submitModal} />
+        <PublishScreen />
       </React.Fragment>
     );
   }

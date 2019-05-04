@@ -28,3 +28,6 @@
 - lodableComponents
     * code spliting
     * ssr
+
+- Test
+    * jest

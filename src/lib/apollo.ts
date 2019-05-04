@@ -7,8 +7,17 @@ import { withClientState } from 'apollo-link-state';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { toast } from 'react-toastify';
-
 import StorageProvider from './StorageProvider';
+
+export const isDevServer =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:4000/graphql'
+    : 'https://creatix-api-server.herokuapp.com/graphql';
+
+export const isDevSocket =
+  process.env.NODE_ENV === 'development'
+    ? 'ws://localhost:4000/subscription'
+    : 'ws://creatix-api-server.herokuapp.com/subscription';
 
 const getToken = () => {
   const storage = StorageProvider.localStorage('creatix');
@@ -37,7 +46,7 @@ const authMiddleware = new ApolloLink((operation: Operation, forward: any) => {
 
 const httpLink = new HttpLink({
   credentials: 'include',
-  uri: 'http://localhost:4000/graphql',
+  uri: isDevServer,
 });
 
 const wsLink = new WebSocketLink({

@@ -14,7 +14,7 @@ Quill.register('modules/markdownShortcuts', MarkdownShortcuts);
 export interface QuillEditorProps {
   title: string;
   onChangeTitle: (title: string) => void;
-  onClickSubmitModal: () => void;
+  onClickPublish: () => void;
 }
 export interface QuillEditorState {
   titleFocus: boolean;
@@ -328,11 +328,10 @@ export default class QuillEditor extends React.Component<
   };
 
   public render() {
-    const { title, onClickSubmitModal } = this.props;
+    const { title, onClickPublish } = this.props;
     const {
       addLink,
       addLinkPosition,
-      titleFocus,
       addLinkDefaultValue,
       shadow,
     } = this.state;
@@ -350,7 +349,7 @@ export default class QuillEditor extends React.Component<
           onChange={this.handleChangeTitle}
           value={title}
         />
-        <Toolbar shadow={shadow} onClickSubmitModal={onClickSubmitModal} />
+        <Toolbar shadow={shadow} onClickPublish={onClickPublish} />
         <Editor>
           <div ref={this.editor} tabIndex={2} />
           {addLink && (

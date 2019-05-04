@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import {
   MdFormatBold,
   MdFormatItalic,
-  MdFormatUnderlined,
   MdFormatStrikethrough,
   MdInsertLink,
   MdFormatQuote,
@@ -12,7 +11,6 @@ import {
 import palette from '../../../lib/styles/palette';
 import RoundButton from '../../common/RoundButton';
 
-// box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.09);
 const ToolbarBlock = styled.div<{
   shadow: boolean;
 }>`
@@ -80,14 +78,14 @@ const Separator = styled.div`
 export interface ToolbarProps {
   shadow: boolean;
   onClick?: Function;
-  onClickSubmitModal: () => void;
+  onClickPublish: () => void;
 }
 
 const { useEffect, useState, useCallback } = React;
 const Toolbar: React.SFC<ToolbarProps> = ({
   shadow,
   onClick = () => {},
-  onClickSubmitModal,
+  onClickPublish,
 }) => {
   return (
     <ToolbarBlock id="toolbar" shadow={shadow}>
@@ -157,7 +155,7 @@ const Toolbar: React.SFC<ToolbarProps> = ({
         </ToolbarItem>
       </ToolbarGroup>
       <Separator />
-      <RoundButton onClick={onClickSubmitModal}>작성하기</RoundButton>
+      <RoundButton onClick={onClickPublish}>출간하기</RoundButton>
     </ToolbarBlock>
   );
 };
