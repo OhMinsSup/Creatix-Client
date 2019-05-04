@@ -48,11 +48,6 @@ const LocationsBlock = styled.div`
 
 const WriterInfoBlock = styled.div`
   position: relative;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  line-height: 2px;
-  top: 1.5rem;
   > .wrapper {
     display: flex;
     flex-direction: row;
@@ -60,7 +55,6 @@ const WriterInfoBlock = styled.div`
     .username {
       font-size: 0.875rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
       color: white;
       margin-left: 0.5rem;
       text-decoration: none;

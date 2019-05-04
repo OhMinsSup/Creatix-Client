@@ -16,7 +16,6 @@ const MainTemplateBlock = styled(PageTemplate)`
 
 const MainLeft = styled.header`
   width: 350px;
-  z-index: 910;
   @media (max-width: 1024px) {
     display: none;
   }
@@ -24,7 +23,6 @@ const MainLeft = styled.header`
 
 const MainRight = styled.div`
   width: 450px;
-  z-index: 910;
   @media (max-width: 1230px) {
     display: none;
   }

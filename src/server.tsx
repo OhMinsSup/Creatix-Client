@@ -11,9 +11,15 @@ import fetch from 'isomorphic-fetch';
 import path from 'path';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import proxy from 'express-http-proxy';
+import 'localstorage-polyfill';
 import App from './App';
 
+(global as any)['localStorage'] = localStorage;
+
+const app = express();
+
 const clientStats = path.resolve('./build/loadable-stats.json');
+
 function createPage(
   html: string,
   collected: { script: string; link: string; style: string },
@@ -32,7 +38,8 @@ function createPage(
       ${collected.style}
     </head>
     
-    <body><noscript>You need to enable JavaScript to run this app.</noscript>
+    <body>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
       <div id="root">${html}</div>
       ${collected.script}
     </body>
@@ -40,7 +47,9 @@ function createPage(
     </html>`;
 }
 
-const app = express();
+/**
+ * Process server rendering
+ */
 
 const render = async (req: Request, res: Response, next: NextFunction) => {
   if (req.path === '/graphql') {
@@ -68,7 +77,6 @@ const render = async (req: Request, res: Response, next: NextFunction) => {
   );
 
   const jsx = extractor.collectChunks(Root);
-  console.log(jsx);
 
   try {
     await getDataFromTree(jsx);
@@ -82,7 +90,6 @@ const render = async (req: Request, res: Response, next: NextFunction) => {
   ).replace(/</g, '\\u003c')}</script>`;
   const sheet = new ServerStyleSheet();
   const rendered = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
-
   const scStyles = sheet.getStyleTags();
   const collected = {
     script: apolloStateScript + extractor.getScriptTags(),
@@ -95,14 +102,19 @@ const render = async (req: Request, res: Response, next: NextFunction) => {
 
 const router = Router();
 
-router.get('/', render);
+router.get('/', (req, res, next) => {
+  return render(req, res, next);
+});
 
-app.use(express.static(path.resolve('./build')));
+// app.use(express.static(path.resolve(__dirname, '../build')));
+
 app.use((req, res, next) => {
-  if (req.statusCode !== 404) return;
+  if (!req.route) {
+    return render(req, res, next);
+  }
   return next();
 });
-app.use(render);
+
 app.use(proxy('localhost'));
 
 app.listen(4001, () =>

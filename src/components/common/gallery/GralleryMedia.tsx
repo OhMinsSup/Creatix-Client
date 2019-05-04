@@ -5,8 +5,6 @@ const GralleryMediaBlock = styled.div<{ visible: boolean }>`
   border-radius: 0 0 4px 4px;
   padding-bottom: 51px;
   line-height: 0;
-  min-height: 200px;
-  overflow: hidden;
   position: relative;
   text-align: center;
   background-color: rgb(64, 64, 64);
@@ -17,7 +15,7 @@ const GralleryMediaBlock = styled.div<{ visible: boolean }>`
     `}
   img {
     width: 100%;
-    height: 894px;
+    height: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
     border: 0;

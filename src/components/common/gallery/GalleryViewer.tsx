@@ -20,28 +20,25 @@ const GalleryViewerOverlay = styled.div`
 const GalleryViewerBlock = styled.div`
   display: block;
   position: fixed;
-  overflow: auto;
-  overflow-y: hidden;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 3000;
   text-align: center;
-  ::before {
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-    content: '';
-  }
   .contents {
-    display: inline-block;
+    display: flex;
     position: relative;
+    top: 8rem;
     width: 768px;
-    min-width: 592px;
-    min-height: 945px;
+    height: 768px;
+    margin: 0 auto;
     background-color: rgb(64, 60, 35);
     border-radius: 7px;
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 600px;
+    }
     .close {
       cursor: pointer;
       position: fixed;

@@ -5,7 +5,6 @@ import IllustrationList from '../../containers/list/IllustrationList';
 const IllustrationPageBlock = styled.div`
   display: flex;
   width: 100%;
-  z-index: 904;
   flex-grow: 1;
   position: relative;
 `;

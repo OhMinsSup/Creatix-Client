@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
@@ -84,6 +82,7 @@ module.exports = {
   servedPath: getServedPath(resolveApp('package.json')),
   ssrIndexJs: resolveApp('src/server'),
   ssrBuild: resolveApp('dist'),
+  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

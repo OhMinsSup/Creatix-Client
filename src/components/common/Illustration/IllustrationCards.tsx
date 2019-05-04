@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import IllustrationCard from './IllustrationCard';
 
 const IllustrationCardsBlock = styled.div`
+  display: flex;
   margin: 0 auto;
   width: 100%;
 `;

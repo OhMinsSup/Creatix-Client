@@ -11,7 +11,7 @@ const IllustWritePage = loadable(() => import('./pages/write/IllustWritePage'));
 const BooksWritePage = loadable(() => import('./pages/write/BooksWritePage'));
 
 interface AppProps {}
-const App: React.SFC<AppProps> = () => (
+const App: React.SFC<AppProps> = props => (
   <React.Fragment>
     <Switch>
       <Route exact path="/" component={MainPage} />

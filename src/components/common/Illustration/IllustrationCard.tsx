@@ -8,7 +8,7 @@ import IllustrationFooter from './IllustrationFooter';
 
 const IllustrationCardBlock = styled.div`
   display: block;
-  width: calc(100% - 10rem);
+  width: 100%;
   padding: 1rem 1.8rem;
   border-radius: 8px;
   margin: 0 auto;
