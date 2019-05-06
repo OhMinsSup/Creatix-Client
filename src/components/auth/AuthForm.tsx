@@ -49,7 +49,7 @@ const AuthFormBlock = styled.div`
   }
 `;
 
-interface AuthFormProps {
+export interface AuthFormProps {
   mode: 'LOGIN' | 'REGISTER';
   loading: boolean;
   registered: boolean | null;
