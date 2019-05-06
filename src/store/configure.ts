@@ -7,7 +7,6 @@ const composeEnhancers = devTools || compose;
 
 const configure = (preloadedState?: any) => {
   const store = createStore(modules, preloadedState, composeEnhancers());
-
   return store;
 };
 

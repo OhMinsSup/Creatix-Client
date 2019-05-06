@@ -11,15 +11,27 @@ const IllustWritePage = loadable(() => import('./pages/write/IllustWritePage'));
 const BooksWritePage = loadable(() => import('./pages/write/BooksWritePage'));
 
 interface AppProps {}
-const App: React.SFC<AppProps> = props => (
+const App: React.SFC<AppProps> = () => (
   <React.Fragment>
     <Switch>
-      <Route exact path="/" component={MainPage} />
-      <Route path="/:mode(illust|books)" component={MainPage} />
-      <Route path="/email-login" component={EmailLoginPage} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="/write/illust" component={IllustWritePage} />
-      <Route path="/write/books" component={BooksWritePage} />
+      <Route exact path="/" render={props => <MainPage {...props} />} />
+      <Route
+        path="/:mode(illust|books)"
+        render={props => <MainPage {...props} />}
+      />
+      <Route
+        path="/email-login"
+        render={props => <EmailLoginPage {...props} />}
+      />
+      <Route path="/register" render={props => <RegisterPage {...props} />} />
+      <Route
+        path="/write/illust"
+        render={props => <IllustWritePage {...props} />}
+      />
+      <Route
+        path="/write/books"
+        render={props => <BooksWritePage {...props} />}
+      />
     </Switch>
     <Core />
     <Etc />

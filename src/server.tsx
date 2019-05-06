@@ -106,7 +106,7 @@ router.get('/', (req, res, next) => {
   return render(req, res, next);
 });
 
-// app.use(express.static(path.resolve(__dirname, '../build')));
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.use((req, res, next) => {
   if (!req.route) {
@@ -115,7 +115,7 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.use(proxy('localhost'));
+app.use('/graphql', proxy('http://localhost:4000'));
 
 app.listen(4001, () =>
   console.log('SSR server listening to http://localhost:4001'),

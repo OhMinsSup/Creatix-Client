@@ -1,12 +1,22 @@
 import React from 'react';
 import QuillEditor from '../../components/write/books/QuillEditor';
 import PublishScreen from './PublishScreen';
+import { connect } from 'react-redux';
+import { StoreState } from '../../store/modules';
+import { openPublish } from '../../store/modules/write';
 
 interface WriteBooksContainerState {
   title: string;
-  publish: boolean;
 }
-interface WriteBooksContainerProps {}
+interface OwnProps {}
+interface StateProps {
+  visible: boolean;
+}
+interface DispatchProps {
+  openPublish: typeof openPublish;
+}
+type WriteBooksContainerProps = StateProps & DispatchProps & OwnProps;
+
 class WriteBooksContainer extends React.Component<
   WriteBooksContainerProps,
   WriteBooksContainerState
@@ -15,7 +25,6 @@ class WriteBooksContainer extends React.Component<
     super(props);
     this.state = {
       title: '',
-      publish: true,
     };
   }
 
@@ -25,20 +34,19 @@ class WriteBooksContainer extends React.Component<
     });
   };
 
-  onClickPublish = () => {
-    this.setState({
-      publish: !this.state.publish,
-    });
+  onOpen = () => {
+    const { openPublish } = this.props;
+    openPublish();
   };
 
   render() {
-    const { title, publish } = this.state;
+    const { title } = this.state;
     return (
       <React.Fragment>
         <QuillEditor
           title={title}
           onChangeTitle={this.onChangeTitle}
-          onClickPublish={this.onClickPublish}
+          onClickPublish={this.onOpen}
         />
         <PublishScreen />
       </React.Fragment>
@@ -46,4 +54,11 @@ class WriteBooksContainer extends React.Component<
   }
 }
 
-export default WriteBooksContainer;
+export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
+  ({ write }) => ({
+    visible: write.publish,
+  }),
+  {
+    openPublish,
+  },
+)(WriteBooksContainer);

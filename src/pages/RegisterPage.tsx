@@ -10,4 +10,4 @@ const RegisterPage: React.SFC<RegisterPageProps> = ({ location, history }) => (
   </RegisterTemplate>
 );
 
-export default withRouter(RegisterPage);
+export default RegisterPage;

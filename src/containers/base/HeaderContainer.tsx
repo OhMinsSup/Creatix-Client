@@ -18,10 +18,9 @@ interface StateProps {
 interface DispatchProps {
   openAuthModal: typeof openAuthModal;
 }
+
 type HeaderContainerProps = StateProps & DispatchProps & OwnProps;
-
 const { useEffect, useCallback, useState } = React;
-
 const HeaderContainer: React.SFC<HeaderContainerProps> = ({
   width,
   logged,
