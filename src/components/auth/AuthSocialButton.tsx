@@ -29,7 +29,7 @@ const AuthSocialButtonBlock = styled.button<{ border: boolean }>`
   }
 `;
 
-interface AuthSocialButtonProps {
+export interface AuthSocialButtonProps {
   provider: 'facebook' | 'google' | 'github';
   tabIndex?: number;
 }

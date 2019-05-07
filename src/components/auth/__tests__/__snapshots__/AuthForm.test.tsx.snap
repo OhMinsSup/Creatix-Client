@@ -1,9 +1,208 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthForm renders correctly 1`] = `
+.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3rem;
+}
+
+.c1 input {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #dee2e6;
+  border-right: none;
+}
+
+.c1 input::-webkit-input-placeholder {
+  color: #868e96;
+}
+
+.c1 input::-moz-placeholder {
+  color: #868e96;
+}
+
+.c1 input:-ms-input-placeholder {
+  color: #868e96;
+}
+
+.c1 input::placeholder {
+  color: #868e96;
+}
+
+.c1 input:disabled {
+  background: #f1f3f5;
+}
+
+.c1 button {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background: #15aabf;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.c1 button:hover,
+.c1 button:focus {
+  background: #22b8cf;
+}
+
+.c1 button:disabled {
+  background: #adb5bd;
+  color: #dee2e6;
+  cursor: default;
+}
+
+.c3 {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.125s all ease-in;
+  transition: 0.125s all ease-in;
+}
+
+.c3:focus {
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.35);
+}
+
+.c4 {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.125s all ease-in;
+  transition: 0.125s all ease-in;
+  border: 1px solid #dee2e6;
+}
+
+.c4:focus {
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.35);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  line-height: 1.5;
+}
+
+.c0 h2,
+.c0 h4 {
+  margin: 0;
+}
+
+.c0 h2 {
+  font-size: 1.3125rem;
+  color: #343a40;
+}
+
+.c0 h4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #868e96;
+}
+
+.c0 section {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.c0 section + section {
+  margin-top: 2.5rem;
+}
+
+.c0 .foot {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.c0 .foot span {
+  margin-right: 0.25rem;
+}
+
+.c0 .foot a {
+  font-weight: bold;
+  color: #15aabf;
+  cursor: pointer;
+}
+
+.c0 .foot a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
 <div>
   <div
-    class="sc-ifAKCX ifibdM"
+    class="c0"
   >
     <div>
       <h2>
@@ -15,7 +214,7 @@ exports[`AuthForm renders correctly 1`] = `
           회원가입
         </h4>
         <form
-          class="sc-bwzfXH gkWlzE"
+          class="c1"
         >
           <input
             placeholder="이메일을 입력하세요."
@@ -35,10 +234,10 @@ exports[`AuthForm renders correctly 1`] = `
           회원가입
         </h4>
         <div
-          class="sc-bxivhb hYrwtB"
+          class="c2"
         >
           <button
-            class="sc-htpNat iBQNlG"
+            class="c3"
             style="background: rgb(39, 46, 51);"
             tabindex="4"
           >
@@ -57,7 +256,7 @@ exports[`AuthForm renders correctly 1`] = `
             </svg>
           </button>
           <button
-            class="sc-htpNat cEDuYC"
+            class="c4"
             style="background: rgb(240, 62, 62);"
             tabindex="5"
           >
@@ -76,7 +275,7 @@ exports[`AuthForm renders correctly 1`] = `
             </svg>
           </button>
           <button
-            class="sc-htpNat iBQNlG"
+            class="c3"
             style="background: rgb(59, 89, 152);"
             tabindex="6"
           >

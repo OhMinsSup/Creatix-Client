@@ -9,7 +9,8 @@ const IllustSubmitAreaBlock = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   .back-btn {
     display: flex;
     flex-direction: row;

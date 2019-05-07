@@ -11,6 +11,7 @@ const WriteIllustFormBlock = styled.div`
   position: relative;
   margin-top: 12px;
   margin-bottom: 12px;
+  top: 1rem;
   .form {
     display: flex;
     flex-direction: column;

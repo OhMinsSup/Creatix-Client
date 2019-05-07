@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 import AuthForm, { AuthFormProps } from '../AuthForm';
-import {} from '../../../store/modules/auth';
 
 describe('AuthForm', () => {
   const setup = (props: Partial<AuthFormProps> = {}) => {

@@ -27,7 +27,7 @@ const LoginPageBlock = styled.div`
   }
 `;
 
-interface LoginPageProps {
+export interface LoginPageProps {
   text: string;
   loading: boolean;
 }

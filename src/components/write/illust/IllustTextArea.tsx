@@ -40,6 +40,8 @@ const IllustTextAreaBlock = styled.div`
 const TogglerBlock = styled.div<{ visible: boolean }>`
   display: flex;
   flex-direction: row;
+  position: relative;
+  top: 0.875rem;
   label {
     font-weight: bold;
     font-size: 1.125rem;
@@ -133,11 +135,11 @@ const IllustTextArea: React.SFC<IllustTextAreaProps> = ({
           onInsert={onInsert}
           onRemove={onRemove}
         />
+        <TogglerBlock visible={visible}>
+          <label>공개 범위</label>
+          <Toggler value={visible} onClick={onToggleCheck} />
+        </TogglerBlock>
       </div>
-      <TogglerBlock visible={visible}>
-        <label>공개 범위</label>
-        <Toggler value={visible} onClick={onToggleCheck} />
-      </TogglerBlock>
     </IllustTextAreaBlock>
   );
 };

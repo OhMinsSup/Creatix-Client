@@ -33,14 +33,18 @@ const HeaderUserIconBlock = styled.div`
 `;
 
 export interface HeaderUserIconProps {
+  thumbnail?: string;
   onClick: () => void;
 }
 
-const HeaderUserIcon: React.SFC<HeaderUserIconProps> = ({ onClick }) => {
-  const thumbnail = 'https://avatars.io/instagram/username/medium';
+const HeaderUserIcon: React.SFC<HeaderUserIconProps> = ({
+  onClick,
+  thumbnail,
+}) => {
+  const defaultThumbnail = 'https://avatars.io/instagram/username/medium';
   return (
     <HeaderUserIconBlock onClick={onClick}>
-      <img src={thumbnail} alt="thumbnail" />
+      <img src={thumbnail || defaultThumbnail} alt="thumbnail" />
       <MdArrowDropDown />
     </HeaderUserIconBlock>
   );

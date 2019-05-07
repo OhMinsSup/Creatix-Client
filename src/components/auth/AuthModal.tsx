@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import transitions from '../../lib/styles/transitions';
@@ -67,9 +67,7 @@ const AuthModalBlock = styled.div<{ visible: boolean }>`
   }
 `;
 
-const { useState, useEffect } = React;
-
-interface AuthModalProps {
+export interface AuthModalProps {
   visible: boolean;
   onAuthModalClose: () => void;
 }

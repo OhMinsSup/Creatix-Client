@@ -46,12 +46,12 @@ const AuthEmailFormBlock = styled.form`
   }
 `;
 
-interface AuthEmailFormProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+export interface AuthEmailFormProps {
   value: string;
-  onSubmit: (value: string) => void;
   mode: 'REGISTER' | 'LOGIN';
   disabled: boolean;
+  onSubmit: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const AuthEmailForm: React.SFC<AuthEmailFormProps> = ({

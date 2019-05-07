@@ -4,6 +4,7 @@ import IllustrationCard from './IllustrationCard';
 
 const IllustrationCardsBlock = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   width: 100%;
 `;
@@ -15,6 +16,10 @@ interface IllustrationCardsProps {
 const IllustrationCards: React.SFC<IllustrationCardsProps> = ({ onOpen }) => {
   return (
     <IllustrationCardsBlock>
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
+      <IllustrationCard onOpen={onOpen} />
       <IllustrationCard onOpen={onOpen} />
     </IllustrationCardsBlock>
   );

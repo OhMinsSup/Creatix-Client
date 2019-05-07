@@ -86,7 +86,7 @@ const localStateLink = withClientState({
     auth: {
       __typename: 'Auth',
       isLoggedIn: Boolean(
-        StorageProvider.localStorage('WhoChat').get('access_token'),
+        StorageProvider.localStorage('creatix').get('access_token'),
       ),
     },
   },

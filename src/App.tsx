@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Core from './containers/etc/Core';
 import loadable from '@loadable/component';
+import Core from './containers/etc/Core';
 import Etc from './containers/etc/Etc';
 
 import RegisterPage from './pages/RegisterPage';
