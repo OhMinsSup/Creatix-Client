@@ -14,13 +14,11 @@ interface DispatchProps {
   closePublish: typeof closePublish;
 }
 type PublishScreenProps = StateProps & DispatchProps & OwnProps;
-
-const { useCallback } = React;
 const PublishScreen: React.SFC<PublishScreenProps> = ({
   visible,
   closePublish,
 }) => {
-  const onCancel = useCallback(() => {
+  const onCancel = React.useCallback(() => {
     closePublish();
   }, [closePublish]);
 

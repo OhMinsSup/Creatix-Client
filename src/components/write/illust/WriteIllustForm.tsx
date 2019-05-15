@@ -31,8 +31,6 @@ export type IllustTextFormType = {
   description: string;
 };
 
-const { useState } = React;
-
 interface WriteIllustFormProps {
   onUploadClick: () => void;
   onDrop: (e: DragEvent) => void;
@@ -50,7 +48,7 @@ const WriteIllustForm: React.SFC<WriteIllustFormProps> = ({
   const [state, dispatch] = useTags({
     tags: [],
   });
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   const onInsert = (tag: string) => {
     const processedTag = tag.trim();

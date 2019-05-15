@@ -11,8 +11,6 @@ import { connect } from 'react-redux';
 import { StoreState } from '../../store/modules';
 import { setUserData } from '../../store/modules/auth';
 
-const { useState, useEffect } = React;
-
 interface OwnProps {
   location: Location;
   history: History;
@@ -23,8 +21,8 @@ interface DispatchProps {
 }
 type EmailLoginProps = StateProps & DispatchProps & OwnProps;
 const EmailLogin: React.SFC<EmailLoginProps> = props => {
-  const [code, setCode] = useState('');
-  useEffect(() => {
+  const [code, setCode] = React.useState('');
+  React.useEffect(() => {
     const query = qs.parse(props.location.search, {
       ignoreQueryPrefix: true,
     });

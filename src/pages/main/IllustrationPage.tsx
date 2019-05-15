@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import IllustrationList from '../../containers/list/IllustrationList';
+import { RouteComponentProps } from 'react-router';
 
 const IllustrationPageBlock = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const IllustrationPageBlock = styled.div`
   position: relative;
 `;
 
-interface IllustrationPageProps {}
+interface IllustrationPageProps extends RouteComponentProps {}
 
 const IllustrationPage: React.SFC<IllustrationPageProps> = () => (
   <IllustrationPageBlock>

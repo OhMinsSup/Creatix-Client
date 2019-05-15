@@ -58,7 +58,6 @@ const NavMenuBlock = styled.nav`
 `;
 
 interface NavMenuProps {}
-
 const NavMenu: React.SFC<NavMenuProps> = () => {
   return (
     <NavMenuBlock>

@@ -85,7 +85,6 @@ const IllustrationUserInfo = styled.div`
 `;
 
 interface IllustrationMetaProps {}
-
 const IllustrationMeta: React.SFC<IllustrationMetaProps> = () => {
   return (
     <IllustrationMetaBlock>

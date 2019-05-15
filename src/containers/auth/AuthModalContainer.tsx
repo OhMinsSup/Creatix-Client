@@ -24,7 +24,6 @@ interface DispatchProps {
 }
 type AuthModalContainerProps = StateProps & DispatchProps & OwnProps;
 
-const { useCallback, useState } = React;
 const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
   visible,
   mode,
@@ -32,13 +31,13 @@ const AuthModalContainer: React.SFC<AuthModalContainerProps> = ({
   closeAuthModal,
 }) => {
   let sendAuthEmailFn: MutationFn<sendAuthEmail, sendAuthEmailVariables>;
-  const [registered, setRegistered] = useState<boolean | null>(null);
+  const [registered, setRegistered] = React.useState<boolean | null>(null);
 
   const onAuthModalClose = () => {
     closeAuthModal();
   };
 
-  const onToggleMode = useCallback(() => {
+  const onToggleMode = React.useCallback(() => {
     const nextMode = mode === 'REGISTER' ? 'LOGIN' : 'REGISTER';
     changeAuthModalMode(nextMode);
   }, [mode]);

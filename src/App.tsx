@@ -9,12 +9,16 @@ const MainPage = loadable(() => import('./pages/main/MainPage'));
 const EmailLoginPage = loadable(() => import('./pages/EmailLoginPage'));
 const IllustWritePage = loadable(() => import('./pages/write/IllustWritePage'));
 const BooksWritePage = loadable(() => import('./pages/write/BooksWritePage'));
+const IllustViewerPage = loadable(() =>
+  import('./pages/view/IllustViewerPage'),
+);
 
 interface AppProps {}
 const App: React.SFC<AppProps> = () => (
   <React.Fragment>
     <Switch>
       <Route exact path="/" render={props => <MainPage {...props} />} />
+      <Route path="/register" render={props => <RegisterPage {...props} />} />
       <Route
         path="/:mode(illust|books)"
         render={props => <MainPage {...props} />}
@@ -23,7 +27,6 @@ const App: React.SFC<AppProps> = () => (
         path="/email-login"
         render={props => <EmailLoginPage {...props} />}
       />
-      <Route path="/register" render={props => <RegisterPage {...props} />} />
       <Route
         path="/write/illust"
         render={props => <IllustWritePage {...props} />}
@@ -31,6 +34,10 @@ const App: React.SFC<AppProps> = () => (
       <Route
         path="/write/books"
         render={props => <BooksWritePage {...props} />}
+      />
+      <Route
+        path="/@:username/illust/:urlSlug"
+        render={props => <IllustViewerPage {...props} />}
       />
     </Switch>
     <Core />

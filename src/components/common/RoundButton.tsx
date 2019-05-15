@@ -8,8 +8,8 @@ type ButtonSize = 'SMALL' | 'DEFAULT' | 'LARGE';
 type RoundButtonBlockProps = {
   inline?: boolean;
   color: string;
-  size: ButtonSize;
   border: boolean;
+  size: ButtonSize;
 };
 
 const RoundButtonBlock = styled.button<RoundButtonBlockProps>`

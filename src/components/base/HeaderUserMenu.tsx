@@ -16,10 +16,10 @@ const HeaderUserMenuBlock = styled.div`
 `;
 
 interface HeaderUserMenuProps {
-  onClose: () => void;
-  onLogout: () => void;
   username: string;
   visible: boolean;
+  onClose: () => void;
+  onLogout: () => void;
 }
 
 const HeaderUserMenu: React.SFC<HeaderUserMenuProps> = ({

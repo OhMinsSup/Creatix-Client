@@ -6,8 +6,8 @@ const PageTemplateBlock = styled.div``;
 
 interface PageTemplateProps {
   hideHeader?: boolean;
-  style?: React.CSSProperties;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const PageTemplate: React.SFC<PageTemplateProps> = ({

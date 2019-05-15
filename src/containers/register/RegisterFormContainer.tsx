@@ -19,8 +19,6 @@ import {
 } from '../../lib/graphql/mutations/auth/localRegister/localRegister.typing';
 import { LOG_USER_IN } from '../../lib/graphql/shared/shared.querie';
 
-const { useEffect, useState } = React;
-
 interface OwnProps {
   location: Location;
   history: History;
@@ -44,9 +42,9 @@ const RegisterFormContainer: React.SFC<RegisterFormContainerProps> = ({
 }) => {
   let localRegisterFn: MutationFn<localRegister, localRegisterVariables>;
 
-  const [error, setError] = useState<null | string>(null);
-  const [code, setCode] = useState('');
-  useEffect(() => {
+  const [error, setError] = React.useState<null | string>(null);
+  const [code, setCode] = React.useState('');
+  React.useEffect(() => {
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });

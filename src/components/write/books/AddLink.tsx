@@ -57,13 +57,11 @@ interface AddLinkProps {
   left: number;
   top: number;
   stickToRight?: boolean;
+  defaultValue: string;
   onConfirm: (link: string) => void;
   onClose: () => void;
   onDelete?: () => void;
-  defaultValue: string;
 }
-
-const { useCallback, useRef, useEffect } = React;
 
 const AddLink: React.SFC<AddLinkProps> = ({
   left,
@@ -75,15 +73,15 @@ const AddLink: React.SFC<AddLinkProps> = ({
   defaultValue,
 }) => {
   const [value, onChange] = useInput(defaultValue);
-  const onSubmit = useCallback(
+  const onSubmit = React.useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       onConfirm(value);
     },
     [value],
   );
-  const input = useRef<HTMLInputElement>(null);
-  useEffect(() => {
+  const input = React.useRef<HTMLInputElement>(null);
+  React.useEffect(() => {
     if (!input.current) return;
     input.current.focus();
   }, []);

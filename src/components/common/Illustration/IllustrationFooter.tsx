@@ -34,7 +34,6 @@ const RightBlock = styled.div`
 `;
 
 interface IllustrationFooterProps {}
-
 const IllustrationFooter: React.SFC<IllustrationFooterProps> = () => {
   return (
     <IllustrationFooterBlock>

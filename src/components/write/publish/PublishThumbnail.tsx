@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdPhoto as ThumbnailIcon } from 'react-icons/md';
 import PublishSection from './PublishSection';
@@ -119,17 +119,15 @@ const Thumbnail: React.SFC<ThumbnailProps> = () => {
   );
 };
 
-const { useState } = React;
-
 interface PublishThumbnailProps {}
 const PublishThumbnail: React.SFC<PublishThumbnailProps> = () => {
-  const [focus, setFocus] = useState(false);
+  const [focus, setFocus] = React.useState(false);
 
-  const onFocus = useCallback(() => {
+  const onFocus = React.useCallback(() => {
     setFocus(true);
   }, [focus]);
 
-  const onBlur = useCallback(() => {
+  const onBlur = React.useCallback(() => {
     setFocus(false);
   }, [focus]);
 

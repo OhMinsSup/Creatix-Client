@@ -35,8 +35,8 @@ const ButtonBlock = styled.button<{ color: ColorType; inline: boolean }>`
 `;
 
 interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
-  color?: ColorType;
   inline?: boolean;
+  color?: ColorType;
 }
 
 const Button: React.SFC<ButtonProps> = ({

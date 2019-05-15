@@ -81,7 +81,6 @@ export interface ToolbarProps {
   onClickPublish: () => void;
 }
 
-const { useEffect, useState, useCallback } = React;
 const Toolbar: React.SFC<ToolbarProps> = ({
   shadow,
   onClick = () => {},

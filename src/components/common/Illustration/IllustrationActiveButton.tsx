@@ -78,9 +78,9 @@ const IllustrationActiveButtonBlock = styled.button<{
 `;
 
 interface IllustrationActiveButtonProps {
-  icon: React.ReactNode;
   type: 'comment' | 'like' | 'share' | 'save';
   count?: number;
+  icon: React.ReactNode;
 }
 
 const IllustrationActiveButton: React.SFC<IllustrationActiveButtonProps> = ({

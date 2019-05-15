@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import WriteBooksContainer from '../../containers/wrtie/WriteBooksContainer';
 import WriteBooksTemplate from '../../components/write/books/WriteBooksTemplate';
 
@@ -10,4 +10,4 @@ const BooksWritePage: React.SFC<BooksWritePageProps> = () => (
   </WriteBooksTemplate>
 );
 
-export default withRouter(BooksWritePage);
+export default BooksWritePage;

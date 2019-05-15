@@ -9,7 +9,6 @@ import CheckUserQuery from '../../lib/graphql/querys/checkUser/checkUser.query';
 import { CHECK_USER } from '../../lib/graphql/querys/checkUser/checkUser.querie';
 import StorageProvider from '../../lib/StorageProvider';
 
-const { useEffect } = React;
 const storage = StorageProvider.localStorage('creatix');
 const logged = !!(storage.get('access_token') && storage.get('user'));
 
@@ -33,7 +32,7 @@ const Core: React.SFC<CoreProps> = ({ grally, setWidth, setUserData }) => {
     setWidth(window.innerWidth);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener('resize', onResize);
   });
 

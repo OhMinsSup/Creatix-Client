@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { MdLockOutline } from 'react-icons/md';
+
 const LabelInputBlock = styled.div<{ focus: boolean }>`
   label,
   input {
@@ -84,7 +85,6 @@ export interface LabelInputProps extends InputProps {
   onChange?: React.ChangeEventHandler;
 }
 
-const { useState, useCallback } = React;
 const LabelInput: React.SFC<LabelInputProps> = ({
   label,
   name,
@@ -94,11 +94,11 @@ const LabelInput: React.SFC<LabelInputProps> = ({
   disabled,
   ...rest
 }) => {
-  const [focus, setFocus] = useState(false);
-  const onFocus = useCallback(() => {
+  const [focus, setFocus] = React.useState(false);
+  const onFocus = React.useCallback(() => {
     setFocus(true);
   }, []);
-  const onBlur = useCallback(() => {
+  const onBlur = React.useCallback(() => {
     setFocus(false);
   }, []);
 

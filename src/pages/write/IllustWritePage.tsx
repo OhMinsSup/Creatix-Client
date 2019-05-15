@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import WriteIllustTemplate from '../../components/write/illust/WriteIllustTemplate';
 import WrtieIllustContainer from '../../containers/wrtie/WrtieIllustContainer';
 
@@ -11,4 +11,4 @@ const IllustWritePage: React.SFC<IllustWritePageProps> = () => (
   </WriteIllustTemplate>
 );
 
-export default withRouter(IllustWritePage);
+export default IllustWritePage;

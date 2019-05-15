@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import transitions from '../../lib/styles/transitions';
@@ -76,8 +76,8 @@ const AuthModal: React.SFC<AuthModalProps> = ({
   visible,
   onAuthModalClose,
 }) => {
-  const [closed, setClosed] = useState(true);
-  useEffect(() => {
+  const [closed, setClosed] = React.useState(true);
+  React.useEffect(() => {
     let timeoutId: number | null = null;
     if (visible) {
       setClosed(false);

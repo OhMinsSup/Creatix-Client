@@ -2,6 +2,7 @@ import React from 'react';
 import Textarea from 'react-textarea-autosize';
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
+
 const LabelTextAreaBlock = styled.div<{ focus: boolean }>`
   label,
   textarea {
@@ -83,7 +84,6 @@ export interface LabelTextAreaProps extends TextAreaProps {
   onChange?: React.ChangeEventHandler;
 }
 
-const { useState, useCallback, createRef } = React;
 const LabelTextArea: React.SFC<LabelTextAreaProps> = ({
   label,
   name,
@@ -92,11 +92,11 @@ const LabelTextArea: React.SFC<LabelTextAreaProps> = ({
   onChange,
   ...rest
 }) => {
-  const [focus, setFocus] = useState(false);
-  const onFocus = useCallback(() => {
+  const [focus, setFocus] = React.useState(false);
+  const onFocus = React.useCallback(() => {
     setFocus(true);
   }, []);
-  const onBlur = useCallback(() => {
+  const onBlur = React.useCallback(() => {
     setFocus(false);
   }, []);
 

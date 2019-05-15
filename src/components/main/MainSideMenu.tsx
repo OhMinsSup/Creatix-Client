@@ -8,12 +8,10 @@ const MainSideMenuBlock = styled.div`
 `;
 
 interface MainSideMenuProps {}
-const MainSideMenu: React.SFC<MainSideMenuProps> = () => {
-  return (
-    <MainSideMenuBlock>
-      <NavMenu />
-    </MainSideMenuBlock>
-  );
-};
+const MainSideMenu: React.SFC<MainSideMenuProps> = () => (
+  <MainSideMenuBlock>
+    <NavMenu />
+  </MainSideMenuBlock>
+);
 
 export default MainSideMenu;

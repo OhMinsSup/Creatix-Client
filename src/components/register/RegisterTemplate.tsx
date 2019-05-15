@@ -26,7 +26,6 @@ const RegisterTemplateBlock = styled.div`
 `;
 
 export interface RegisterTemplateProps {}
-
 const RegisterTemplate: React.SFC<RegisterTemplateProps> = ({ children }) => {
   return (
     <RegisterTemplateBlock>

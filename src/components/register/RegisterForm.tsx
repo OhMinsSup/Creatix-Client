@@ -28,9 +28,9 @@ export type RegisterFormType = {
 };
 
 interface RegisterFormProps {
-  onSubmit: (form: RegisterFormType) => any;
   defaultEmail: string | null | undefined;
   error: string | null;
+  onSubmit: (form: RegisterFormType) => void;
 }
 const RegisterForm: React.SFC<RegisterFormProps> = ({
   defaultEmail,
