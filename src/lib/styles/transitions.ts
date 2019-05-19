@@ -42,9 +42,22 @@ const popOutToBottom = keyframes`
     transform: translateY(400px) scale(0.75);
   }`;
 
+const justLiked = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`;
+
 const transitions = {
   fadeIn,
   fadeOut,
+  justLiked,
   popInFromBottom,
   popOutToBottom,
 };

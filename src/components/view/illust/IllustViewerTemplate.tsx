@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import PageTemplate from '../../base/PageTemplate';
 
 const IllustViewerTemplateBlock = styled(PageTemplate)`
+  display: flex;
+  flex-direction: column;
+
   .illust-viewr {
     display: block;
     margin-top: 20px;
@@ -10,6 +13,16 @@ const IllustViewerTemplateBlock = styled(PageTemplate)`
     padding-bottom: 5px;
     clear: both;
     word-break: break-word;
+  }
+
+  .illust-sequences {
+    padding: 1rem;
+    max-width: 1032px;
+    margin: 0 auto;
+  }
+
+  .illust-comments {
+    margin: 0 auto;
   }
 `;
 
@@ -26,14 +39,21 @@ const IllustViewerContentWrapper = styled.div`
   font-style: normal;
 `;
 
-interface IllustViewerTemplateProps {}
+interface IllustViewerTemplateProps {
+  sequences: React.ReactNode;
+  comments: React.ReactNode;
+}
 const IllustViewerTemplate: React.SFC<IllustViewerTemplateProps> = ({
   children,
+  comments,
+  sequences,
 }) => (
   <IllustViewerTemplateBlock>
     <div className="illust-viewr">
       <IllustViewerContentWrapper>{children}</IllustViewerContentWrapper>
     </div>
+    <div className="illust-sequences">{sequences}</div>
+    <div className="illust-comments">{comments}</div>
   </IllustViewerTemplateBlock>
 );
 

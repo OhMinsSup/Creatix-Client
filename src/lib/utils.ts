@@ -18,3 +18,9 @@ export function detectJSDOM() {
   if (typeof navigator === 'undefined') return false;
   return navigator.userAgent.includes('jsdom');
 }
+
+export const getCurrentScrollPercentage = () => {
+  const scroll =
+    ((window.scrollY + window.innerHeight) / document.body.clientHeight) * 100;
+  return scroll;
+};

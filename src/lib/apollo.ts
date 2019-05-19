@@ -48,7 +48,7 @@ const httpLink = new HttpLink({
   credentials: 'include',
   uri: isDevServer,
 });
-
+/*
 const wsLink = new WebSocketLink({
   options: {
     connectionParams: {
@@ -59,13 +59,13 @@ const wsLink = new WebSocketLink({
   },
   uri: 'ws://localhost:4000/subscription',
 });
-
+*/
 const combinedLinks = split(
   ({ query }) => {
     const { kind, operation }: any = getMainDefinition(query);
     return kind === 'OperationDefinition' && operation === 'subscriptions';
   },
-  wsLink,
+  // wsLink,
   httpLink,
 );
 

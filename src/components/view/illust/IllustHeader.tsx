@@ -80,9 +80,9 @@ const UserDataWrapper = styled.div`
         vertical-align: middle;
         height: 19px;
         padding: 0 10px;
-        color: ${palette.cyan4};
+        color: ${palette.blue4};
         font-size: 13px;
-        border: 1px solid ${palette.cyan3};
+        border: 1px solid ${palette.blue4};
         border-radius: 4px;
         transition: 0.1s background-color, 0.1s border-color, 0.1s color,
           0.1s fill;
@@ -114,23 +114,22 @@ const UserDataWrapper = styled.div`
 
 interface IllustHeaderProps {}
 const IllustHeader: React.SFC<IllustHeaderProps> = () => {
+  const src =
+    'https://thumb.velog.io/resize?url=https://images.velog.io/thumbnails/veloss/43c665f0-b44c-11e8-b8f5-49cedc880031-DHxDbYmUwAASvCI.png&width=256';
   return (
     <IllustHeaderBlock>
       <h1>Vue.js 2.0 라이프사이클 이해하기</h1>
       <div className="user-info">
         <UserThumbnailWrapper>
           <Link className="thumbnail-wrapper" to="/">
-            <img
-              className="thumbnail"
-              src="https://thumb.velog.io/resize?url=https://images.velog.io/thumbnails/veloss/43c665f0-b44c-11e8-b8f5-49cedc880031-DHxDbYmUwAASvCI.png&width=256"
-            />
+            <img className="thumbnail" src={src} />
           </Link>
         </UserThumbnailWrapper>
         <UserDataWrapper>
           <div className="username">
             <Link to="/">@veloss</Link>
             <span className="btn-wrapper">
-              <button>Follow</button>
+              <button>구독하기</button>
             </span>
           </div>
           <div className="date">2019년 4월 28일</div>

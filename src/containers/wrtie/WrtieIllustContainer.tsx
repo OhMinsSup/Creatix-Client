@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import WriteIllustForm from '../../components/write/illust/WriteIllustForm';
 
+interface WrtieIllustContainerState {}
 interface WrtieIllustContainerProps {}
-class WrtieIllustContainer extends Component<WrtieIllustContainerProps> {
+class WrtieIllustContainer extends Component<
+  WrtieIllustContainerProps,
+  WrtieIllustContainerState
+> {
+  constructor(props: WrtieIllustContainerProps) {
+    super(props);
+    this.state = {};
+  }
+
   onUploadClick = () => {
     const upload = document.createElement('input');
     upload.type = 'file';
