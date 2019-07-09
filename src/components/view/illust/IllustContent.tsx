@@ -48,6 +48,10 @@ const ContnetsBlock = styled.div`
   word-wrap: break-word;
   font-family: 'Noto Serif KR', sans-serif;
   color: ${palette.gray8};
+  .edit-link {
+    color: rgb(61, 118, 153);
+    text-decoration: none;
+  }
 `;
 
 const TagBlock = styled.div`
@@ -74,10 +78,42 @@ const TagBlock = styled.div`
 
 const images = [
   'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
+  'http://webimage.10x10.co.kr/play2016/2017/20/20171018192333_0h334.jpg',
 ];
 
 interface IllustContentProps {}
 const IllustContent: React.SFC<IllustContentProps> = ({}) => {
+  const text = `내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  https://www.naver.com 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. https://velog.io 내용입니다. 내용입니다.
+  내용입니다. 내용입니다. 내용입니다. 내용입니다.`;
+
+  const onEditText = (text: string) => {
+    const regExp = /(https?:\/\/\S+|\n)/;
+    const regExpLink = /https?:\/\/\S+/;
+    return text.split(regExp).map((line, i) => {
+      return line.match(regExpLink) ? (
+        <a className="edit-link" target="_blank" href={line} key={i}>
+          {line}
+        </a>
+      ) : (
+        line
+      );
+    });
+  };
+
   return (
     <IllustContentBlock>
       <div className="contents">
@@ -89,17 +125,7 @@ const IllustContent: React.SFC<IllustContentProps> = ({}) => {
           ))}
         </ul>
       </div>
-      <ContnetsBlock>
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-        내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.
-      </ContnetsBlock>
+      <ContnetsBlock>{onEditText(text)}</ContnetsBlock>
       <TagBlock>
         {['illust', 'books', 'microserveris', 'docker'].map((t, i) => (
           <Link to={`/tags/${t}`} key={i}>

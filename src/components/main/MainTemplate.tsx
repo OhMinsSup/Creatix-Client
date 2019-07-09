@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../base/PageTemplate';
-import TrendingWeekContainer from '../../containers/main/TrendingWeekContainer';
 
 const MainTemplateBlock = styled(PageTemplate)`
   width: 1400px;
@@ -39,7 +38,6 @@ const MainTemplate: React.SFC<MainTemplateProps> & MainTemplateNamespace = ({
 }) => {
   return (
     <MainTemplateBlock>
-      <TrendingWeekContainer />
       <main>{children}</main>
     </MainTemplateBlock>
   );

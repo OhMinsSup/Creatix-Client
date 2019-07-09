@@ -191,7 +191,6 @@ class IllustLeftSticker extends React.Component<
           </button>
           <div className="likes-count">10</div>
           <React.Fragment>
-            <button className="circle sqare">구독</button>
             <button className="circle share" onClick={this.onFacebookShare}>
               <FacebookIcon />
             </button>

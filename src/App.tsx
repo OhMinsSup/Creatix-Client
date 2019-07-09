@@ -17,7 +17,7 @@ interface AppProps {}
 const App: React.SFC<AppProps> = () => (
   <React.Fragment>
     <Switch>
-      <Route exact path="/" component={MainPage} />
+      <Route exact path="/" render={props => <MainPage {...props} />} />
       <Route path="/register" component={RegisterPage} />
       <Route
         path="/:mode(illust|books)"
