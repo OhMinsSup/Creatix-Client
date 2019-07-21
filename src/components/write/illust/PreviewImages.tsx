@@ -77,11 +77,13 @@ const PreviewImagesBlock = styled.div`
   }
 `;
 
-const Images: React.SFC = () => {
+const Images: React.SFC<{
+  url: string;
+}> = ({ url }) => {
   return (
     <div className="image">
       <div className="image-container">
-        <img />
+        <img src={url} alt={url} />
       </div>
       <div className="remove" onClick={() => ({})}>
         <CloseIcon />
@@ -90,13 +92,17 @@ const Images: React.SFC = () => {
   );
 };
 
-interface PreviewImagesProps {}
-const PreviewImages: React.SFC<PreviewImagesProps> = () => {
+interface PreviewImagesProps {
+  urls: string[];
+}
+const PreviewImages: React.SFC<PreviewImagesProps> = ({ urls }) => {
   return (
     <PreviewImagesBlock>
       <div className="wrapper">
         <div className="container">
-          <Images />
+          {urls.map(url => {
+            <Images url={url} key={url} />;
+          })}
         </div>
       </div>
     </PreviewImagesBlock>

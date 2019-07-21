@@ -32,6 +32,7 @@ export type IllustTextFormType = {
 };
 
 interface WriteIllustFormProps {
+  urls: string[];
   onUploadClick: () => void;
   onDrop: (e: DragEvent) => void;
   onPasteImage: (file: File) => void;
@@ -40,6 +41,7 @@ const WriteIllustForm: React.SFC<WriteIllustFormProps> = ({
   onUploadClick,
   onDrop,
   onPasteImage,
+  urls,
 }) => {
   const [form, onChange] = useInputs<IllustTextFormType>({
     title: '',
@@ -92,8 +94,7 @@ const WriteIllustForm: React.SFC<WriteIllustFormProps> = ({
             onToggleCheck={onToggleCheck}
           />
         </div>
-        {/* TODO 이미지가 존재하면 보여주고 존재하지 않으면 안보여줌 
-        <PreviewImages /> */}
+        {urls && urls.length > 0 ? <PreviewImages urls={urls} /> : null}
       </div>
     </WriteIllustFormBlock>
   );
