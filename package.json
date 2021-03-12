@@ -86,7 +86,7 @@
     "react": "^16.8.4",
     "react-apollo": "^2.5.3",
     "react-app-polyfill": "^0.2.1",
-    "react-dev-utils": "^7.0.3",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.8.4",
     "react-icon-base": "^2.1.2",
     "react-icons": "^3.5.0",
